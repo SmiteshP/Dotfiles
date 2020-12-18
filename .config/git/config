@@ -1,0 +1,31 @@
+[user]
+	email = smiteshpatil2010@gmail.com
+	name = Smitesh Patil
+[core]
+	autocrlf = input
+	pager = diff-so-fancy | less --tabs=4 -RF
+[init]
+	defaultBranch = master
+[sendemail]
+	confirm = auto
+	smtpServer = smtp.gmail.com
+	smtpServerPort = 587
+	smtpEncryption = tls
+	smtpUser = smiteshpatil2010@gmail.com
+	suppresscc = self
+[include]
+	path = config.local
+[color]
+	ui = true
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = 11
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
