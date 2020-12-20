@@ -3,7 +3,7 @@
 	name = Smitesh Patil
 [core]
 	autocrlf = input
-	pager = diff-so-fancy | less --tabs=4 -RF
+	pager = diff-so-fancy | less --tabs=4 -RF -+X
 [init]
 	defaultBranch = master
 [sendemail]
