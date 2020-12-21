@@ -29,6 +29,7 @@ alias vim="nvim"
 
 # fix clear for termite
 alias clear="echo -ne '\ec'"
+bindkey -s '^L' 'clear\n'
 
 # generic aliases
 alias df="df -h"                          # human-readable sizes

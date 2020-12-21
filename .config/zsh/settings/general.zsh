@@ -5,7 +5,7 @@ bindkey -v
 
 # Less
 LESS=-R		# colors
-LESSHISTFILE=$HOME/.cache/lesshist	# hisroty file location
+LESSHISTFILE=$HOME/.cache/lesshist	# history file location
 
 # ls colors
 autoload -U colors && colors
