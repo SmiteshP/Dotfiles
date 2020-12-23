@@ -2,9 +2,6 @@ EDITOR=nvim
 
 LC_TIME=en_IN
 
-# Vim mode
-bindkey -v
-
 # Less
 LESS=-R		# colors
 LESSHISTFILE=$HOME/.cache/lesshist	# history file location
