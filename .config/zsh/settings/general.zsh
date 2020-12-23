@@ -1,3 +1,5 @@
+EDITOR=nvim
+
 LC_TIME=en_IN
 
 # Vim mode
