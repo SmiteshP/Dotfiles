@@ -1,5 +1,7 @@
 ## --- Alias --- ##
 
+disable r
+
 # easy cd
 alias -- -='cd -'
 alias -g ...=../..
@@ -23,9 +25,12 @@ alias ll='ls -lh'
 alias ls='ls --color=tty'
 alias lsa='ls -lah'
 
-# vi and vim alias for nvim
+# vi and vim as alias for nvim
 alias vi="nvim"
 alias vim="nvim"
+
+# mutt as alias for neomutt
+alias mutt="neomutt"
 
 # fix clear for termite
 alias clear="echo -ne '\ec'"
@@ -80,7 +85,9 @@ function activate() {
 	fi
 }
 
+# update zsh extras and pkgfile
 function zupdate() {
+	echo "Update command-not-found database"
 	sudo pkgfile -u
 	echo
 	echo "Powerlevel10k"
