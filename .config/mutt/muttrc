@@ -1,0 +1,25 @@
+set ssl_force_tls = yes
+set abort_nosubject = no
+set mail_check = 60
+set timeout = 10
+set sort = "reverse-date-received"
+#set signature = "~/.config/mutt/signature"
+set copy = no
+
+set from = "smiteshpatil2010@gmail.com"
+set realname = "Smitesh Patil"
+
+# Imap settings
+set imap_user = "smiteshpatil2010@gmail.com"
+
+# Smtp settings
+set smtp_url = "smtps://smiteshpatil2010@smtp.gmail.com"
+
+# Remote gmail folders
+set folder = "imaps://imap.gmail.com/"
+set spoolfile = "+INBOX"
+set postponed = "+[Gmail]/Drafts"
+set record = "+[Gmail]/Sent Mail"
+set trash = "+[Gmail]/Trash"
+
+source ~/.config/mutt/muttrc.local
