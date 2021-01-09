@@ -113,20 +113,6 @@ endfunction
 
 "" ------ Competitive coding ------ {
 
-"autocmd FileType cpp nnoremap <Leader>r :Run<CR>
-"autocmd FileType cpp nnoremap <Leader>rt :Runt<CR>
-"autocmd FileType cpp nnoremap <Leader>rf :Runf<CR>
-"autocmd FileType cpp nnoremap <Leader>re :RunO2<CR>
-
-" Command to compile and run c++ file,
-" take input from ~/CompCoding/Input.txt
-" write output to ~/CompCoding/Output.txt
-"autocmd FileType cpp command Runf call CompCoding_outfile()
-"autocmd FileType cpp command Run call CompCoding_noOutfile()
-"autocmd FileType cpp command Runt call CompCoding_terminal()
-"autocmd FileType cpp command RunO2 call CompCoding_optim_noOutfile()
-"autocmd FileType cpp command -nargs=? Load call LoadFromLibrary(<q-args>)
-
 autocmd FileType cpp call SetCompCodingKeys()
 function SetCompCodingKeys()
 	nnoremap <Leader>r :call CompCoding_noOutfile()<CR>
@@ -142,7 +128,7 @@ function CompCoding_outfile()
 	if v:shell_error == 1
 		echom "Compilation error"
 	else
-		! ./a.out < ~/CompCoding/IO_Files/Input.txt > ~/CompCoding/IO_Files/Output.txt
+		! ./a.out < in > out
 	endif
 endfunction
 
@@ -152,7 +138,7 @@ function CompCoding_noOutfile()
 	if v:shell_error == 1
 		echom "Compilation error"
 	else
-		! echo "\nOutput (debug)\t:" && /usr/bin/time -f"\nTime\t: \%e seconds\nMemory\t: \%M Kbytes" ./a.out < ~/CompCoding/IO_Files/Input.txt
+		! echo "\nOutput (debug)\t:" && /usr/bin/time -f"\nTime\t: \%e seconds\nMemory\t: \%M Kbytes" ./a.out < in
 	endif
 endfunction
 
@@ -162,7 +148,7 @@ function CompCoding_optim_noOutfile()
 	if v:shell_error == 1
 		echom "Compilation error"
 	else
-		! echo "\nOutput (fast)\t:" && /usr/bin/time -f"\nTime\t: \%e seconds\nMemory\t: \%M Kbytes" ./a.out < ~/CompCoding/IO_Files/Input.txt
+		! echo "\nOutput (fast)\t:" && /usr/bin/time -f"\nTime\t: \%e seconds\nMemory\t: \%M Kbytes" ./a.out < in
 	endif
 endfunction
 
