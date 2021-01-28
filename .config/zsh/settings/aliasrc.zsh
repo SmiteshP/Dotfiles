@@ -1,7 +1,5 @@
 ## --- Alias --- ##
 
-disable r
-
 # easy cd
 alias -- -='cd -'
 alias -g ...=../..
@@ -48,11 +46,15 @@ alias del="mv --target-directory /home/smith/.local/share/Trash/files --backup=t
 
 ## --- Custom Functions --- ##
 
+disable r
+
 # Use ranger to navigate to a folder in terminal
-function rd() {
+function r() {
 	ranger --choosedir=$HOME/.cache/rangerdir;
-	LASTDIR=`cat $HOME/.cache/rangerdir`;
-	cd "$LASTDIR"
+	LASTDIR=$(cat $HOME/.cache/rangerdir);
+	if [ "$PWD" != "$LASTDIR" ]; then
+		cd "$LASTDIR"
+	fi
 }
 
 # Use fzf to quickly find infomation about installed package
