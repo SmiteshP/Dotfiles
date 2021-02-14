@@ -55,6 +55,9 @@ let mapleader = ';'
 vnoremap <C-c> "+y
 nnoremap <C-a> ggVG
 nnoremap <Leader>n :NERDTreeToggle<CR>
+nnoremap <silent> <TAB> :bnext<CR>
+nnoremap <silent> <S-TAB> :bprevious<CR>
+nnoremap <silent> <Leader><TAB> :Buffers<CR>
 
 autocmd BufEnter * call SetCtrlP()
 function SetCtrlP()
@@ -84,8 +87,8 @@ endif
 
 " * airline theme *
 let g:airline_theme = 'monochrome'
-"let g:airline#extensions#tabline#enabled = 1
-"let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_min_count = 2
 "autocmd BufDelete * call airline#extensions#tabline#buflist#invalidate()
 
 " * vim easy-motion *
