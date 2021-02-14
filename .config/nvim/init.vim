@@ -86,7 +86,7 @@ if has('nvim') && !exists('g:fzf_layout')
 endif
 
 " * airline theme *
-let g:airline_theme = 'monochrome'
+let g:airline_theme = 'material'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_min_count = 2
 "autocmd BufDelete * call airline#extensions#tabline#buflist#invalidate()
@@ -199,10 +199,10 @@ let g:airline_symbols.paste = '∥'
 let g:airline_symbols.whitespace = 'Ξ'
 
 " airline symbols
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
 let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
