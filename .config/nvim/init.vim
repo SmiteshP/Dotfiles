@@ -78,13 +78,6 @@ colorscheme material
 " * NerdTree *
 let NERDTreeMinimalUI=1
 
-" * FZF *
-if has('nvim') && !exists('g:fzf_layout')
-	autocmd! FileType fzf
-	autocmd  FileType fzf set laststatus=0 noruler
-		\| autocmd BufLeave <buffer> set laststatus=2 ruler
-endif
-
 " * airline theme *
 let g:airline_theme = 'material'
 let g:airline#extensions#tabline#enabled = 1
