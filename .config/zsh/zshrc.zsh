@@ -12,7 +12,7 @@ bindkey -v
 export LANG=en_US.UTF-8
 
 # Path to zsh config
-export ZSH="$HOME/.config/zsh"
+ZSH="$HOME/.config/zsh"
 
 # Source all settings
 for f in $ZSH/settings/*.zsh; do

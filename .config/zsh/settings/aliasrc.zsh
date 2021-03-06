@@ -40,6 +40,7 @@ alias free="free -m"                      # show sizes in MB
 alias cp="cp -i"                          # confirm before overwriting something
 alias more="less"                         # because more is less :P
 alias diff="diff --color"
+alias grep="grep --color"
 
 # del - alternative to rm - moves file to trash
 alias del="mv --target-directory /home/smith/.local/share/Trash/files --backup=t"

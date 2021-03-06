@@ -1,10 +1,8 @@
-EDITOR=nvim
-
-LC_TIME=en_IN
+export EDITOR=nvim
 
 # Less
-LESS=-R		# colors
-LESSHISTFILE=$HOME/.cache/lesshist	# history file location
+export LESS=-R		# colors
+export LESSHISTFILE=$HOME/.cache/lesshist	# history file location
 
 # ls colors
 autoload -U colors && colors
