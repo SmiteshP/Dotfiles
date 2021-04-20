@@ -90,14 +90,17 @@ function activate() {
 
 # update zsh extras and pkgfile
 function zupdate() {
-	echo "Update command-not-found database"
+	bold=$(tput bold)
+	normal=$(tput sgr0)
+
+	echo "${bold}Update command-not-found database${normal}"
 	sudo pkgfile -u
-	echo
-	echo "Powerlevel10k"
-	git -C $ZSH/extras/powerlevel10k/ pull --ff-only
-	echo
-	echo "Dotbare"
-	git -C $ZSH/extras/dotbare/ pull --ff-only
+
+	for d in $ZSH/extras/*/ ; do
+		echo
+		echo $bold$(basename $d)$normal
+		git -C $d pull --ff-only
+	done
 }
 
 # ex - archive extractor
