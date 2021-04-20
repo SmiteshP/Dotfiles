@@ -28,3 +28,6 @@ source $ZSH/extras/powerlevel10k/powerlevel10k.zsh-theme
 
 # Source dotbare
 source $ZSH/extras/dotbare/dotbare.plugin.zsh
+
+# Source zsh autosuggestions
+source $ZSH/extras/zsh-autosuggestions/zsh-autosuggestions.zsh
