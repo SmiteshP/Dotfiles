@@ -32,7 +32,6 @@ alias mutt="neomutt"
 
 # fix clear for termite
 alias clear="echo -ne '\ec'"
-bindkey -s '^L' 'clear\n'
 
 # generic aliases
 alias df="df -h"                          # human-readable sizes
@@ -44,6 +43,25 @@ alias grep="grep --color"
 
 # del - alternative to rm - moves file to trash
 alias del="mv --target-directory /home/smith/.local/share/Trash/files --backup=t"
+
+## --- Key Bindings --- ##
+
+# fix clear binding for termite
+bindkey -s '^L' ' clear\n'
+
+# allow vv to edit the command line (standard bash behaviour)
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd 'vv' edit-command-line
+
+# allow ctrl-p, ctrl-n for navigate history (standard bash behaviour)
+bindkey '^P' up-history
+bindkey '^N' down-history
+
+# allow ctrl-h, ctrl-w, ctrl-? for char and word deletion (standard bash behaviour)
+bindkey '^?' backward-delete-char
+bindkey '^h' backward-delete-char
+bindkey '^w' backward-kill-word
 
 ## --- Custom Functions --- ##
 
