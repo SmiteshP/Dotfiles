@@ -31,3 +31,6 @@ source $ZSH/extras/dotbare/dotbare.plugin.zsh
 
 # Source zsh autosuggestions
 source $ZSH/extras/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# Source zsh syntax higlighting (must be sourced at the end)
+source $ZSH/extras/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
