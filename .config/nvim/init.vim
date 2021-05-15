@@ -1,5 +1,5 @@
 "" Pulgin manager Vim-Plug
-call plug#begin('~/.config/nvim/plugged')
+call plug#begin('~/.local/share/nvim/site/plugged')
 
 "	-- Colorschemes --
 	Plug 'kaicataldo/material.vim'
