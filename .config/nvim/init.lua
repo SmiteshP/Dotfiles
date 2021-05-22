@@ -4,14 +4,11 @@ vim.api.nvim_set_keymap('v', "<Space>", "<NOP>", {noremap = true, silent = true}
 vim.g.mapleader = ' '
 
 -- Global variables
-Config_highlight = true   -- global value (used by lsp) -- highlight text on cursor hold
+Config_highlight = false   -- global value (used by lsp) -- highlight text on cursor hold
 Config_theme = "material" -- global value (used by galaxyline)
 
 -- Source plugins
 require("plugins")
-
--- Set theme
-require("config.theme."..Config_theme)
 
 -- Tab settings
 vim.cmd("set tabstop=4")
@@ -28,6 +25,9 @@ vim.wo.number = true
 vim.wo.relativenumber = true
 vim.wo.cursorline = true
 vim.wo.signcolumn = "yes"
+vim.o.incsearch = true
+vim.o.hlsearch = true
+vim.o.scrolloff = 8
 vim.o.showmode = false
 vim.o.splitright = true
 vim.o.termguicolors = true
