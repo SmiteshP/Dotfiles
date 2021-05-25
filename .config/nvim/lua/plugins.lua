@@ -9,20 +9,7 @@ end
 
 local packer = require("packer")
 
-packer.init({
-	auto_clean = true,
-	compile_on_sync = true,
-	display = {
-		open_cmd = 'vnew \\[packer\\]',
-	},
-	profile = {
-		enable = true
-	}
-})
-
-packer.reset()
-
-local plugins = packer.startup(function(use)
+local plugins = packer.startup({function(use)
 	-- Packer
 	use "wbthomason/packer.nvim"
 
@@ -122,6 +109,17 @@ local plugins = packer.startup(function(use)
 		config = function() if Config_theme == "tokyonight" then require("config.theme.tokyonight") end end
 	}
 
-end)
+end,
+config = {
+	auto_clean = true,
+	compile_on_sync = true,
+	ensure_dependencies = true,
+	display = {
+		open_cmd = 'vnew \\[packer\\]',
+	},
+	profile = {
+		enable = false
+	}
+}})
 
 return plugins
