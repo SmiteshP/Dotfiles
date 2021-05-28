@@ -1,6 +1,8 @@
+local common_settings = require("config.lsp.lsp-common-config")
+
 require("lspconfig").pyright.setup {
 	filetypes = { "python" },
-	on_attach = require("config.lsp.lsp-common-config").common_on_attach,
+	on_attach = common_settings.common_on_attach,
 	settings = {
 		python = {
 			analysis = {

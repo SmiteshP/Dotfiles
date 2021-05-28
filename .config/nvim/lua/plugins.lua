@@ -102,11 +102,11 @@ local plugins = packer.startup({function(use)
 	-- Colorschemes
 	use {
 		"marko-cerovac/material.nvim",
-		config = function() if Config_theme == "material" then require("config.theme.material") end end
+		config = function() if Config.theme == "material" then require("config.theme.material") end end
 	}
 	use	{
 		"folke/tokyonight.nvim",
-		config = function() if Config_theme == "tokyonight" then require("config.theme.tokyonight") end end
+		config = function() if Config.theme == "tokyonight" then require("config.theme.tokyonight") end end
 	}
 
 end,

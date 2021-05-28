@@ -16,11 +16,10 @@ require("compe").setup {
 	max_kind_width = 100,
 	max_menu_width = 100,
 	documentation = true,
-
 	source = {
 		path = true;
 		buffer = true;
-		calc = true;
+		calc = false;
 		nvim_lsp = true;
 	}
 }

@@ -24,7 +24,7 @@ local colors = {
 	red = "#ff5555"
 }
 
-local theme = require("config.theme."..Config_theme..".statusline_colors")
+local theme = require("config.theme."..Config.theme..".statusline_colors")
 
 local mode_color = function(x, g)
 	local mode_colors = {

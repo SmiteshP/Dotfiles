@@ -4,8 +4,15 @@ vim.api.nvim_set_keymap('v', "<Space>", "<NOP>", {noremap = true, silent = true}
 vim.g.mapleader = ' '
 
 -- Global variables
-Config_highlight = false   -- global value (used by lsp) -- highlight text on cursor hold
-Config_theme = "material" -- global value (used by galaxyline)
+Config = {
+	theme = "material",
+	lsp = {
+		highlight = false
+	},
+	statusline = {
+		minimal = false
+	}
+}
 
 -- Source plugins
 require("plugins")

@@ -1,4 +1,4 @@
-nnoremap <Leader>r :call CompCoding_noOutfile()<CR>
+nnoremap <Leader>rr :call CompCoding_noOutfile()<CR>
 nnoremap <Leader>rt :call CompCoding_terminal()<CR>
 nnoremap <Leader>rf :call CompCoding_outfile()<CR>
 nnoremap <Leader>re :call CompCoding_optim_noOutfile()<CR>
