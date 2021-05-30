@@ -28,17 +28,25 @@ local plugins = packer.startup({function(use)
 			"kyazdani42/nvim-web-devicons",
 			opt = true
 		},
+		after = {
+			"material.nvim",
+			"tokyonight.nvim"
+		},
 		config = [[require("config.galaxyline")]]
 	}
 
 	-- Bufferline
 	use {
-		"romgrk/barbar.nvim",
+		"akinsho/nvim-bufferline.lua",
 		requires = {
 			"kyazdani42/nvim-web-devicons",
 			opt = true
 		},
-		config = [[require("config.barbar")]]
+		after = {
+			"material.nvim",
+			"tokyonight.nvim"
+		},
+		config = [[require("config.nvim-bufferline")]]
 	}
 
 	-- Git Stuff
