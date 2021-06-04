@@ -28,10 +28,6 @@ local plugins = packer.startup({function(use)
 			"kyazdani42/nvim-web-devicons",
 			opt = true
 		},
-		after = {
-			"material.nvim",
-			"tokyonight.nvim"
-		},
 		config = [[require("config.galaxyline")]]
 	}
 
@@ -41,10 +37,6 @@ local plugins = packer.startup({function(use)
 		requires = {
 			"kyazdani42/nvim-web-devicons",
 			opt = true
-		},
-		after = {
-			"material.nvim",
-			"tokyonight.nvim"
 		},
 		config = [[require("config.nvim-bufferline")]]
 	}
@@ -110,11 +102,11 @@ local plugins = packer.startup({function(use)
 	-- Colorschemes
 	use {
 		"marko-cerovac/material.nvim",
-		config = function() if Config.theme == "material" then require("config.theme.material") end end
+		opt = true
 	}
 	use	{
 		"folke/tokyonight.nvim",
-		config = function() if Config.theme == "tokyonight" then require("config.theme.tokyonight") end end
+		opt = true
 	}
 
 end,

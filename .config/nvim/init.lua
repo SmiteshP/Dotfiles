@@ -17,6 +17,9 @@ Config = {
 -- Source plugins
 require("plugins")
 
+-- Colorscheme
+require("config.theme."..Config.theme)
+
 -- Tab settings
 vim.cmd("set tabstop=4")
 vim.cmd("set shiftwidth=0")
