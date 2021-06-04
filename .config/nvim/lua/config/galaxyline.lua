@@ -36,6 +36,7 @@ local mode_color = function(x, g)
 
 		t = theme.normal[x][g],
 		r = theme.normal[x][g],
+		rm = theme.normal[x][g],
 		["r?"] = theme.normal[x][g],
 
 		s = theme.normal[x][g],
@@ -96,13 +97,17 @@ gls.left[1] = {
 				Rv = "V REPLACE",
 
 				c = "COMMAND",
+				cv = "VIM EX",
+				ce = "EX",
+				r = "PROMPT",
+				rm = "MORE",
+				['r?'] = "CONFIRM",
 				['!'] = "SHELL",
 			}
 			vim.api.nvim_command("hi GalaxyViMode gui=bold guibg="..mode_color('a', "bg").." guifg="..mode_color('a', "fg"))
 			local alias_mode = alias[vim.fn.mode()]
 			if alias_mode == nil then
 				alias_mode = vim.fn.mode()
-				print(string.byte(vim.fn.mode()))
 			end
 			return '⠀'..alias_mode..' '
 		end,
