@@ -196,7 +196,7 @@ gls.left[8] = {
 			if lsp == "No Active Lsp" then
 				return ''
 			else
-				return "⠀  "..lsp
+				return "⠀ "..lsp
 			end
 		end,
 		condition = function()
