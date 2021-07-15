@@ -3,11 +3,12 @@ vim.g.nvim_tree_hide_dotfiles = 1 -- 0 by default, this option hides files and f
 vim.g.nvim_tree_indent_markers = 1 -- "0 by default, this option shows indent markers when folders are open
 vim.g.nvim_tree_follow = 1 -- "0 by default, this option allows the cursor to be updated when entering a buffer
 vim.g.nvim_tree_auto_close = 1 -- 0 by default, closes the tree when it's the last window
+vim.g.nvim_tree_disable_default_keybindings = 1
 local tree_cb = require("nvim-tree.config").nvim_tree_callback
 
 vim.g.nvim_tree_bindings = {
 	{ key = {"<CR>", "o", "<2-LeftMouse>"}, cb = tree_cb("edit") },
-	{ key = {"<2-RightMouse>", "<C-]>"},    cb = tree_cb("cd") },
+	{ key = {"<2-RightMouse>", "<C-l>"},    cb = tree_cb("cd") },
 	{ key = "<C-v>",                        cb = tree_cb("vsplit") },
 	{ key = "<C-x>",                        cb = tree_cb("split") },
 	{ key = "<C-t>",                        cb = tree_cb("tabnew") },
@@ -34,9 +35,9 @@ vim.g.nvim_tree_bindings = {
 	{ key = "gy",                           cb = tree_cb("copy_absolute_path") },
 	{ key = "[c",                           cb = tree_cb("prev_git_item") },
 	{ key = "]c",                           cb = tree_cb("next_git_item") },
-	{ key = "-",                            cb = tree_cb("dir_up") },
+	{ key = {"-", "<C-h>"},                 cb = tree_cb("dir_up") },
 	{ key = "q",                            cb = tree_cb("close") },
-	{ key = "g?",                           cb = tree_cb("toggle_help") },
+	{ key = "?",                            cb = tree_cb("toggle_help") },
 }
 
 vim.g.nvim_tree_show_icons = {git = 1, folders = 1, files = 1}
