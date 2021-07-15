@@ -21,8 +21,8 @@ require("plugins")
 require("config.theme."..Config.theme)
 
 -- Tab settings
-vim.cmd("set tabstop=4")
-vim.cmd("set shiftwidth=0")
+vim.o.tabstop = 4
+vim.o.shiftwidth = 0
 
 -- For LSP
 vim.o.hidden = true
