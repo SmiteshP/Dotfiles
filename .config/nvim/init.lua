@@ -49,6 +49,7 @@ vim.cmd[[
 	augroup generic
 	autocmd!
 	autocmd BufEnter * silent! lcd %:p:h
+	autocmd TextYankPost * lua vim.highlight.on_yank {higroup="IncSearch", timeout=150, on_visual=true}
 	augroup END
 	]]
 
