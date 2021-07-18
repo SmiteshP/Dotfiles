@@ -103,6 +103,12 @@ local plugins = packer.startup({function(use)
 		config = [[require("config.telescope")]]
 	}
 
+	-- Which Key
+	use {
+		"folke/which-key.nvim",
+		config = [[require("config.which-key")]]
+	}
+
 	-- Colorschemes
 	use { "marko-cerovac/material.nvim", opt = true }
 	use	{ "folke/tokyonight.nvim", opt = true }

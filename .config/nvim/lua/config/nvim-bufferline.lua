@@ -2,7 +2,7 @@ require("bufferline").setup {
 	options = {
 		numbers = "none",
 		number_style = "", -- buffer_id at index 1, ordinal at index 2
-		mappings = true,
+		mappings = false,
 		indicator_icon = '▎',
 		buffer_close_icon = '',
 		modified_icon = '●',
@@ -38,5 +38,3 @@ require("bufferline").setup {
 
 vim.api.nvim_set_keymap('n', "<TAB>", ":BufferLineCycleNext<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', "<S-TAB>", ":BufferLineCyclePrev<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', "<Leader>.", ":BufferLineMoveNext<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', "<Leader>,", ":BufferLineMovePrev<CR>", { noremap = true, silent = true })

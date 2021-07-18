@@ -9,8 +9,6 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 end
 
 -- Set leader
-vim.api.nvim_set_keymap('n', "<Space>", "<NOP>", {noremap = true, silent = true})
-vim.api.nvim_set_keymap('v', "<Space>", "<NOP>", {noremap = true, silent = true})
 vim.g.mapleader = ' '
 
 -- Global variables
@@ -36,6 +34,9 @@ vim.o.hidden = true
 vim.o.updatetime = 300
 vim.o.backup = false
 vim.o.writebackup = false
+
+-- Which-key Delay
+vim.o.timeoutlen = 400
 
 -- Generic
 vim.wo.number = true
