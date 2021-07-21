@@ -82,6 +82,7 @@ local plugins = packer.startup({function(use)
 	-- Nvim tree
 	use {
 		"kyazdani42/nvim-tree.lua",
+		cmd = "NvimTreeToggle",
 		requires = {
 			"kyazdani42/nvim-web-devicons",
 			opt = true
@@ -92,6 +93,8 @@ local plugins = packer.startup({function(use)
 	-- Telescope
 	use {
 		"nvim-telescope/telescope.nvim",
+		cmd = "Telescope",
+		module = "telescope",
 		requires = {
 			"nvim-lua/popup.nvim",
 			"nvim-lua/plenary.nvim",
