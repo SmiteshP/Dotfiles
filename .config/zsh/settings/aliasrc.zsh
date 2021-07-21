@@ -30,9 +30,6 @@ alias vim="nvim"
 # mutt as alias for neomutt
 alias mutt="neomutt"
 
-# fix clear for termite
-alias clear="echo -ne '\ec'"
-
 # generic aliases
 alias df="df -h"                          # human-readable sizes
 alias free="free -m"                      # show sizes in MB
@@ -45,9 +42,6 @@ alias grep="grep --color"
 alias del="mv --target-directory /home/smith/.local/share/Trash/files --backup=t"
 
 ## --- Key Bindings --- ##
-
-# fix clear binding for termite
-bindkey -s '^L' ' clear\n'
 
 # allow vv to edit the command line (standard bash behaviour)
 autoload -Uz edit-command-line
