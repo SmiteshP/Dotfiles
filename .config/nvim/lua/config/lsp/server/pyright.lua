@@ -1,8 +1,11 @@
-local common_settings = require("config.lsp.lsp-common-config")
-
 require("lspconfig").pyright.setup {
+	cmd = {
+		vim.fn.stdpath("data") .. "/lspinstall/python/node_modules/.bin/pyright-langserver",
+		"--stdio"
+	},
+	on_attach = require("config.lsp.common-config").common_on_attach,
 	filetypes = { "python" },
-	on_attach = common_settings.common_on_attach,
+	rootPatterns = { ".git", "setup.py", "setup.cfg", "pyproject.toml", "requirements.txt" },
 	settings = {
 		python = {
 			analysis = {

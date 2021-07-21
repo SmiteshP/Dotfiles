@@ -35,22 +35,8 @@ vim.cmd("sign define LspDiagnosticsSignWarning text=❢ texthl=LspDiagnosticsSig
 vim.cmd("sign define LspDiagnosticsSignInformation text=● texthl=LspDiagnosticsSignInformation linehl= numhl=")
 vim.cmd("sign define LspDiagnosticsSignHint text=● texthl=LspDiagnosticsSignHint linehl= numhl=")
 
-require("lspinstall").setup()
-local installed_servers = require("lspinstall").installed_servers()
-local common_settings = require("config.lsp.lsp-common-config")
-
-local configed_servers = {
-	lua = function() require("config.lsp.lua-ls") end,
-	cpp = function() require("config.lsp.clangd") end,
-	python = function() require("config.lsp.pyright") end,
-}
-
-for _, server in pairs(installed_servers) do
-	if configed_servers[server] then
-		configed_servers[server]()
-	else
-		require("lspconfig")[server].setup {
-			on_attach = common_settings.common_on_attach
-		}
-	end
-end
+-- Setup
+require("config.lsp.server.clangd")
+require("config.lsp.server.jdtls")
+require("config.lsp.server.pyright")
+require("config.lsp.server.sumneko_lua")

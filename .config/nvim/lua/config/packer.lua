@@ -55,8 +55,16 @@ local plugins = packer.startup({function(use)
 	-- LSP and other goodies
 	use {
 		"neovim/nvim-lspconfig",
-		requires = { "kabouzeid/nvim-lspinstall" },
 		config = [[require("config.lsp")]]
+	}
+	use {
+		"kabouzeid/nvim-lspinstall",
+		cmd = {
+			"LspInstall",
+			"LspUninstall"
+		},
+		module = "lspinstall",
+		requires = { "neovim/nvim-lspconfig" },
 	}
 	use {
 		"hrsh7th/nvim-compe",
