@@ -51,6 +51,7 @@ wk.setup {
 }
 
 local nmaps = {
+	["<c-\\>"] = "Terminal",
 	["<leader>"] = {
 		b = { "<cmd>NvimTreeToggle<CR>", "File Tree" },
 		c = { name = "Comment", c = { "Comment Line" } },

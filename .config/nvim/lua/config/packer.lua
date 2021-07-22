@@ -120,6 +120,13 @@ local plugins = packer.startup({function(use)
 		config = [[require("config.which-key")]]
 	}
 
+	-- Terminal
+	use {
+		"akinsho/nvim-toggleterm.lua",
+		keys = "<c-\\>",
+		config = [[require("config.nvim-toggleterm")]]
+	}
+
 	-- Colorschemes
 	use { "marko-cerovac/material.nvim", opt = true }
 	use	{ "folke/tokyonight.nvim", opt = true }
