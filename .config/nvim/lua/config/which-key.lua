@@ -60,20 +60,6 @@ local nmaps = {
 			g = { "<cmd>Telescope live_grep<CR>", "Grep" },
 			p = { "<cmd>Telescope git_files<CR>", "Git Files" }
 		},
-		g = {
-			name = "Git",
-			j = { "<cmd>lua require ('gitsigns').next_hunk()<cr>", "Next Hunk" },
-			k = { "<cmd>lua require ('gitsigns').prev_hunk()<cr>", "Prev Hunk" },
-			l = { "<cmd>lua require ('gitsigns').blame_line()<cr>", "Blame" },
-			p = { "<cmd>lua require ('gitsigns').preview_hunk()<cr>", "Preview Hunk" },
-			r = { "<cmd>lua require ('gitsigns').reset_hunk()<cr>", "Reset Hunk" },
-			R = { "<cmd>lua require ('gitsigns').reset_buffer()<cr>", "Reset Buffer" },
-			s = { "<cmd>lua require ('gitsigns').stage_hunk()<cr>", "Stage Hunk" },
-			u = {
-				"<cmd>lua require ('gitsigns').undo_stage_hunk()<cr>",
-				"Undo Stage Hunk",
-			},
-		},
 		x = { "<cmd>bdelete<CR>", "Close Buffer" },
 		["<Tab>"] = { "<cmd>Telescope buffers<CR>", "Show Buffers" },
 		['.'] = { "<cmd>BufferLineMoveNext<CR>", "Buf Move Right" },
