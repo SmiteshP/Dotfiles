@@ -28,27 +28,21 @@ local plugins = packer.startup({function(use)
 	use {
 		"glepnir/galaxyline.nvim",
 		branch = "main",
-		requires = {
-			"kyazdani42/nvim-web-devicons",
-			opt = true
-		},
+		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 		config = [[require("config.galaxyline")]]
 	}
 
 	-- Bufferline
 	use {
 		"akinsho/nvim-bufferline.lua",
-		requires = {
-			"kyazdani42/nvim-web-devicons",
-			opt = true
-		},
+		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 		config = [[require("config.nvim-bufferline")]]
 	}
 
 	-- Git Stuff
 	use {
 		"lewis6991/gitsigns.nvim",
-		requires = { "nvim-lua/plenary.nvim" },
+		requires = { "nvim-lua/plenary.nvim", opt = true },
 		config = [[require("config.gitsigns")]]
 	}
 
@@ -84,6 +78,10 @@ local plugins = packer.startup({function(use)
 	-- Comments
 	use {
 		"terrortylor/nvim-comment",
+		keys = {
+			{ 'n', "<leader>c" },
+			{ 'v', "<leader>c" }
+		},
 		config = [[require("config.nvim-comment")]]
 	}
 
@@ -91,10 +89,7 @@ local plugins = packer.startup({function(use)
 	use {
 		"kyazdani42/nvim-tree.lua",
 		cmd = "NvimTreeToggle",
-		requires = {
-			"kyazdani42/nvim-web-devicons",
-			opt = true
-		},
+		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 		config = [[require("config.nvim-tree")]]
 	}
 
@@ -104,10 +99,20 @@ local plugins = packer.startup({function(use)
 		cmd = "Telescope",
 		module = "telescope",
 		requires = {
-			"nvim-lua/popup.nvim",
-			"nvim-lua/plenary.nvim",
+			{
+				"nvim-lua/popup.nvim",
+				cmd = "Telescope",
+				module = "telescope",
+			},
+			{
+				"nvim-lua/plenary.nvim",
+				cmd = "Telescope",
+				module = "telescope",
+			},
 			{
 				"nvim-telescope/telescope-fzf-native.nvim",
+				cmd = "Telescope",
+				module = "telescope",
 				run = "make"
 			}
 		},
@@ -123,7 +128,7 @@ local plugins = packer.startup({function(use)
 	-- Terminal
 	use {
 		"akinsho/nvim-toggleterm.lua",
-		keys = "<c-\\>",
+		keys = { { 'n', "<c-\\>" } },
 		config = [[require("config.nvim-toggleterm")]]
 	}
 
@@ -139,12 +144,8 @@ config = {
 	auto_clean = true,
 	compile_on_sync = true,
 	ensure_dependencies = true,
-	display = {
-		open_cmd = 'vnew \\[packer\\]',
-	},
-	profile = {
-		enable = false
-	}
+	display = { open_cmd = "vnew \\[packer\\]" },
+	profile = {	enable = false }
 }})
 
 return plugins
