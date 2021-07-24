@@ -128,7 +128,9 @@ local plugins = packer.startup({function(use)
 	-- Terminal
 	use {
 		"akinsho/nvim-toggleterm.lua",
-		keys = { { 'n', "<c-\\>" } },
+		cmd = { "ToggleTerm", "TermExec" },
+		module = "toggleterm",
+		keys = { { 'n', "<c-\\><c-\\>" } },
 		config = [[require("config.nvim-toggleterm")]]
 	}
 
