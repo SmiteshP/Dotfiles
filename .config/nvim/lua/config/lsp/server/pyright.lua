@@ -4,6 +4,7 @@ require("lspconfig").pyright.setup {
 		"--stdio"
 	},
 	on_attach = require("config.lsp.common-config").common_on_attach,
+	capabilities = require("config.lsp.common-config").capabilities,
 	filetypes = { "python" },
 	rootPatterns = { ".git", "setup.py", "setup.cfg", "pyproject.toml", "requirements.txt" },
 	settings = {

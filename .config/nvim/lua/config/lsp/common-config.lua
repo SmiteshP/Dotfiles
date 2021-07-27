@@ -49,4 +49,14 @@ function lsp_config.common_on_attach(client, bufnr)
 	end
 end
 
+lsp_config.capabilities = vim.lsp.protocol.make_client_capabilities()
+lsp_config.capabilities.textDocument.completion.completionItem.snippetSupport = true
+lsp_config.capabilities.textDocument.completion.completionItem.resolveSupport = {
+	properties = {
+		'documentation',
+		'detail',
+		'additionalTextEdits',
+	}
+}
+
 return lsp_config

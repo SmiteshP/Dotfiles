@@ -4,6 +4,7 @@ require("lspconfig").sumneko_lua.setup {
 		"-E", vim.fn.stdpath("data") .. "/lspinstall/lua/sumneko-lua/extension/server/bin/Linux/lua-language-server"
 	},
 	on_attach = require("config.lsp.common-config").common_on_attach,
+	capabilities = require("config.lsp.common-config").capabilities,
 	filetypes = { "lua" },
 	rootPatterns = { ".git" },
 	settings = {

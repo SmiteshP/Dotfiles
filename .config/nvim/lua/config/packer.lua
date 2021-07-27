@@ -62,6 +62,7 @@ local plugins = packer.startup({function(use)
 	}
 	use {
 		"hrsh7th/nvim-compe",
+		requires = "hrsh7th/vim-vsnip",
 		config = [[require("config.nvim-compe")]]
 	}
 

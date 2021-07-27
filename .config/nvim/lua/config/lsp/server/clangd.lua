@@ -4,6 +4,7 @@ require("lspconfig").clangd.setup {
 		"--background-index", "--cross-file-rename", "--header-insertion=never"
 	},
 	on_attach = require("config.lsp.common-config").common_on_attach,
+	capabilities = require("config.lsp.common-config").capabilities,
 	filetypes = { "c", "cpp", "h", "hpp", "objc" },
 	rootPatterns = { ".git", "compile_flags.txt", "compile_commands.json" },
 	handlers = {
