@@ -1,6 +1,6 @@
 local actions = require("telescope.actions")
 
-require("telescope").setup{
+require("telescope").setup {
 	defaults = {
 		vimgrep_arguments = {
 			"rg",
@@ -16,12 +16,6 @@ require("telescope").setup{
 			width = 0.80,
 			prompt_position = "top",
 			preview_cutoff = 120,
-			horizontal = {
-				mirror = false,
-			},
-			vertical = {
-				mirror = true,
-			},
 		},
 		prompt_prefix = "> ",
 		selection_caret = "> ",
@@ -36,16 +30,13 @@ require("telescope").setup{
 		path_display = { "absolute" },
 		winblend = 0,
 		border = {},
-		borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
+		borderchars = { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
 		color_devicons = true,
 		use_less = true,
 		set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
 		file_previewer = require("telescope.previewers").vim_buffer_cat.new,
 		grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
 		qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
-
-		-- Developer configurations: Not meant for general override
-		buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
 		mappings = {
 			i = {
 				["<esc>"] = actions.close,
@@ -53,12 +44,31 @@ require("telescope").setup{
 				["<C-k>"] = actions.move_selection_previous,
 			},
 		},
-		extensions = {
-			fzf = {
-				override_generic_sorter = true, -- override the generic sorter
-				override_file_sorter = true,     -- override the file sorter
-				case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+
+		-- Developer configurations: Not meant for general override
+		buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
+	},
+	pickers = {
+		buffers = {
+			sort_lastused = true,
+			theme = "dropdown",
+			previewer = false,
+			borderchars = {
+				prompt =  { '─', '│', ' ', '│', '┌', '┐', '│', '│' },
+				results = { '─', '│', '─', '│', '├', '┤', '┘', '└' },
+			},
+			mappings = {
+				i = {
+					["<c-d>"] = require("telescope.actions").delete_buffer,
+				}
 			}
+		}
+	},
+	extensions = {
+		fzf = {
+			override_generic_sorter = true,  -- override the generic sorter
+			override_file_sorter = true,     -- override the file sorter
+			case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
 		}
 	}
 }
