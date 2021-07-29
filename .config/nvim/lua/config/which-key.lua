@@ -51,7 +51,13 @@ wk.setup {
 }
 
 local nmaps = {
-	["<c-\\>"] = "Terminal",
+	["<c-\\>"] = {
+		name = "Terminal",
+		["<c-\\>"] = "Toggle Terminal"
+	},
+	["<c-a>"] = { "ggVG", "Select All" },
+	["<Tab>"] = { "<cmd>BufferLineCycleNext<CR>", "Next Buffer" },
+	["<S-Tab>"] = { "<cmd>BufferLineCyclePrev<CR>", "Prev Buffer" },
 	["<leader>"] = {
 		b = { "<cmd>NvimTreeToggle<CR>", "File Tree" },
 		c = { name = "Comment", c = { "Comment Line" } },
@@ -59,7 +65,6 @@ local nmaps = {
 			name = "Find",
 			f = { "<cmd>Telescope find_files<CR>", "Files" },
 			g = { "<cmd>Telescope live_grep<CR>", "Grep" },
-			p = { "<cmd>Telescope git_files<CR>", "Git Files" }
 		},
 		x = { "<cmd>bdelete<CR>", "Close Buffer" },
 		["<Tab>"] = { "<cmd>Telescope buffers<CR>", "Show Buffers" },
@@ -69,6 +74,7 @@ local nmaps = {
 }
 
 local vmaps = {
+	["<c-c>"] = { "\"+y", "Copy to Clipboard" },
 	["<leader>"] = {
 		c = {"Comment Selection"},
 	}

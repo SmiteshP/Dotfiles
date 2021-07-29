@@ -30,10 +30,10 @@ vim.lsp.protocol.CompletionItemKind = {
 }
 
 -- Diagnostics symbols for display in the sign column.
-vim.cmd("sign define LspDiagnosticsSignError text=✖ texthl=LspDiagnosticsSignError linehl= numhl=")
-vim.cmd("sign define LspDiagnosticsSignWarning text=❢ texthl=LspDiagnosticsSignWarning linehl= numhl=")
-vim.cmd("sign define LspDiagnosticsSignInformation text=● texthl=LspDiagnosticsSignInformation linehl= numhl=")
-vim.cmd("sign define LspDiagnosticsSignHint text=● texthl=LspDiagnosticsSignHint linehl= numhl=")
+vim.fn.sign_define("LspDiagnosticsSignError", { texthl = "LspDiagnosticsSignError", text = "✖", numhl = "LspDiagnosticsSignError" })
+vim.fn.sign_define("LspDiagnosticsSignWarning", { texthl = "LspDiagnosticsSignWarning", text = "❢", numhl = "LspDiagnosticsSignWarning" })
+vim.fn.sign_define("LspDiagnosticsSignHint", { texthl = "LspDiagnosticsSignHint", text = "", numhl = "LspDiagnosticsSignHint" })
+vim.fn.sign_define("LspDiagnosticsSignInformation", { texthl = "LspDiagnosticsSignInformation", text = "●", numhl = "LspDiagnosticsSignInformation" })
 
 -- Setup
 require("config.lsp.server.clangd")

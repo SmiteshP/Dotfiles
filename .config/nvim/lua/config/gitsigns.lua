@@ -29,6 +29,9 @@ require("gitsigns").setup {
 					"Undo Stage Hunk",
 				},
 			},
+			["<leader>f"] = {
+				p = { "<cmd>Telescope git_files<CR>", "Git Files" }
+			}
 		}
 		require("which-key").register(maps, opts)
 	end,

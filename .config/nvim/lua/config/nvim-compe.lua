@@ -1,7 +1,7 @@
 vim.o.completeopt = "menuone,noselect"
 
 -- Remove "Pattern not found" from command line
-vim.cmd("set shortmess+=c")
+vim.opt.shortmess:append('c')
 
 require("compe").setup {
 	enabled = true,
