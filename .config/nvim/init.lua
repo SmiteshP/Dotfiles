@@ -40,7 +40,6 @@ vim.o.timeoutlen = 400
 
 -- Generic
 vim.wo.number = true
-vim.wo.relativenumber = true
 vim.wo.cursorline = true
 vim.wo.signcolumn = "yes"
 vim.o.incsearch = true

@@ -135,6 +135,12 @@ local plugins = packer.startup({function(use)
 		config = [[require("config.nvim-toggleterm")]]
 	}
 
+	-- Hop
+	use {
+		"phaazon/hop.nvim",
+		config = [[require("config.hop")]]
+	}
+
 	-- Colorschemes
 	use { "marko-cerovac/material.nvim", opt = true }
 	use	{ "folke/tokyonight.nvim", opt = true }
