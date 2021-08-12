@@ -100,9 +100,18 @@ local plugins = packer.startup({function(use)
 		cmd = "Telescope",
 		module = "telescope",
 		requires = {
-			"nvim-lua/popup.nvim",
-			"nvim-lua/plenary.nvim",
-			{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
+			{ "nvim-lua/popup.nvim", opt = true },
+			{ "nvim-lua/plenary.nvim", opt = true },
+			{
+				"nvim-telescope/telescope-fzf-native.nvim",
+				run = "make",
+				opt = true
+			}
+		},
+		wants = {
+			"popup.nvim",
+			"plenary.nvim",
+			"telescope-fzf-native.nvim"
 		},
 		config = [[require("config.telescope")]]
 	}
