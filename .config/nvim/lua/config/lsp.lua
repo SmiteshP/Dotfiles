@@ -97,10 +97,7 @@ common_config.capabilities.textDocument.completion.completionItem.resolveSupport
 
 -- Setup Servers
 require("lspconfig").clangd.setup {
-	cmd = {
-		vim.fn.stdpath("data") .. "/lspinstall/cpp/clangd/bin/clangd",
-		"--background-index", "--cross-file-rename", "--header-insertion=never"
-	},
+	cmd = { "/usr/bin/clangd", "--background-index", "--cross-file-rename", "--header-insertion=never" },
 	on_attach = common_config.common_on_attach,
 	capabilities = common_config.capabilities,
 	filetypes = { "c", "cpp", "objc" },
@@ -116,7 +113,7 @@ require("lspconfig").clangd.setup {
 }
 
 require("lspconfig").jdtls.setup {
-	cmd = { vim.fn.stdpath("data") .. "/lspinstall/java/jdtls.sh" },
+	cmd = { "jdtls" },
 	on_attach = common_config.common_on_attach,
 	capabilities = common_config.capabilities,
 	filetypes = { "java" },
@@ -124,10 +121,7 @@ require("lspconfig").jdtls.setup {
 }
 
 require("lspconfig").pyright.setup {
-	cmd = {
-		vim.fn.stdpath("data") .. "/lspinstall/python/node_modules/.bin/pyright-langserver",
-		"--stdio"
-	},
+	cmd = { "/usr/bin/pyright-langserver", "--stdio" },
 	on_attach = common_config.common_on_attach,
 	capabilities = common_config.capabilities,
 	filetypes = { "python" },
@@ -146,10 +140,7 @@ require("lspconfig").pyright.setup {
 }
 
 require("lspconfig").sumneko_lua.setup {
-	cmd = {
-		vim.fn.stdpath("data") .. "/lspinstall/lua/sumneko-lua-language-server",
-		"-E", vim.fn.stdpath("data") .. "/lspinstall/lua/sumneko-lua/extension/server/bin/Linux/lua-language-server"
-	},
+	cmd = { "/usr/bin/lua-language-server" },
 	on_attach = common_config.common_on_attach,
 	capabilities = common_config.capabilities,
 	filetypes = { "lua" },
