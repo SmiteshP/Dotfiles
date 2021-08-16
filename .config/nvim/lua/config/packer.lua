@@ -26,10 +26,16 @@ local plugins = packer.startup({function(use)
 
 	-- Status line
 	use {
-		"glepnir/galaxyline.nvim",
-		branch = "main",
-		requires = { "kyazdani42/nvim-web-devicons", opt = true },
-		config = [[require("config.galaxyline")]]
+		"famiu/feline.nvim",
+		wants = {
+			"nvim-web-devicons",
+			"gitsigns.nvim"
+		},
+		requires = {
+			{ "kyazdani42/nvim-web-devicons" },
+			{ "lewis6991/gitsigns.nvim" },
+		},
+		config = [[require("config.feline")]]
 	}
 
 	-- Bufferline
