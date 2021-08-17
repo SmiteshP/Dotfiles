@@ -4,6 +4,7 @@ local components = {
 	mid = {active = {}, inactive = {}},
 	right = {active = {}, inactive = {}}
 }
+
 local properties = {
 	force_inactive = {
 		filetypes = {
@@ -18,42 +19,51 @@ local properties = {
 
 -- Colors setup
 local theme = require("config.theme."..Config.theme..".statusline_colors")
+
+local colors = {}
+vim.schedule(function()
+	colors.lsp_error = vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID("LspDiagnosticsSignError")), "fg#")
+	colors.lsp_warning = vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID("LspDiagnosticsSignWarning")), "fg#")
+	colors.lsp_hint = vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID("LspDiagnosticsSignHint")), "fg#")
+	colors.lsp_information = vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID("LspDiagnosticsSignInformation")), "fg#")
+end)
+
+local mode_colors = {
+	n = theme.normal,
+	no = theme.normal,
+	nov = theme.normal,
+	noV = theme.normal,
+	["no"] = theme.normal,
+
+	t = theme.normal,
+	r = theme.normal,
+	rm = theme.normal,
+	["r?"] = theme.normal,
+
+	s = theme.normal,
+	S = theme.normal,
+	[''] = theme.normal,
+
+	v = theme.visual,
+	V = theme.visual,
+	[''] = theme.visual,
+
+	i = theme.insert,
+	ic = theme.insert,
+	ix = theme.insert,
+
+	R = theme.replace,
+	Rc = theme.replace,
+	Rv = theme.replace,
+	Rx = theme.replace,
+
+	c = theme.command,
+	cv = theme.command,
+	ce = theme.command,
+	['!'] = theme.command,
+}
+
 local mode_color = function()
-	local mode_colors = {
-		n = theme.normal,
-		no = theme.normal,
-		nov = theme.normal,
-		noV = theme.normal,
-		["no"] = theme.normal,
-
-		t = theme.normal,
-		r = theme.normal,
-		rm = theme.normal,
-		["r?"] = theme.normal,
-
-		s = theme.normal,
-		S = theme.normal,
-		[''] = theme.normal,
-
-		v = theme.visual,
-		V = theme.visual,
-		[''] = theme.visual,
-
-		i = theme.insert,
-		ic = theme.insert,
-		ix = theme.insert,
-
-		R = theme.replace,
-		Rc = theme.replace,
-		Rv = theme.replace,
-		Rx = theme.replace,
-
-		c = theme.command,
-		cv = theme.command,
-		ce = theme.command,
-		['!'] = theme.command,
-	}
-
 	local color = mode_colors[vim.fn.mode()]
 
 	if color == nil then
@@ -64,37 +74,37 @@ local mode_color = function()
 end
 
 -- Mode Info
+local alias = {
+	n = "NORMAL",
+	no = "OP PENDING",
+
+	t = "TERMINAL",
+
+	s = "SELECT",
+	S = "S-LINE",
+	[''] = "S-BLOCK",
+
+	v = "VISUAL",
+	V = "V-LINE",
+	[''] = "V-BLOCK",
+
+	i = "INSERT",
+	ic = "INSERT COMPL",
+	ix = "INSERT COMPL",
+
+	R = "REPLACE",
+	Rv = "V REPLACE",
+
+	c = "COMMAND",
+	cv = "VIM EX",
+	ce = "EX",
+	r = "PROMPT",
+	rm = "MORE",
+	['r?'] = "CONFIRM",
+	['!'] = "SHELL",
+}
 table.insert(components.left.active, {
 	provider = function()
-		local alias = {
-			n = "NORMAL",
-			no = "OP PENDING",
-
-			t = "TERMINAL",
-
-			s = "SELECT",
-			S = "S-LINE",
-			[''] = "S-BLOCK",
-
-			v = "VISUAL",
-			V = "V-LINE",
-			[''] = "V-BLOCK",
-
-			i = "INSERT",
-			ic = "INSERT COMPL",
-			ix = "INSERT COMPL",
-
-			R = "REPLACE",
-			Rv = "V REPLACE",
-
-			c = "COMMAND",
-			cv = "VIM EX",
-			ce = "EX",
-			r = "PROMPT",
-			rm = "MORE",
-			['r?'] = "CONFIRM",
-			['!'] = "SHELL",
-		}
 		local alias_mode = alias[vim.fn.mode()]
 		if alias_mode == nil then
 			alias_mode = vim.fn.mode()
@@ -142,8 +152,11 @@ table.insert(components.left.active, {
 table.insert(components.left.active, {
 	provider = function()
 		local filename = vim.fn.fnamemodify(vim.fn.expand("%"), ":~:.")
-		if vim.bo.modified then
+		if vim.bo.modifiable and vim.bo.modified then
 			filename = filename..' '
+		end
+		if vim.bo.readonly and vim.bo.filetype ~= "help" then
+			filename = filename..' '
 		end
 		return filename
 	end,
@@ -174,7 +187,7 @@ table.insert(components.right.active, {
 	end,
 	enabled = function() return require("feline.providers.lsp").diagnostics_exist("Error") end,
 	left_sep = function() return { str = ' ', hl = mode_color().c } end,
-	hl = function() return { fg = vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID("LspDiagnosticsSignError")), "fg#"), bg = mode_color().c.bg } end
+	hl = function() return { fg = colors.lsp_error, bg = mode_color().c.bg } end
 })
 table.insert(components.right.active, {
 	provider = function()
@@ -182,7 +195,7 @@ table.insert(components.right.active, {
 	end,
 	enabled = function() return require("feline.providers.lsp").diagnostics_exist("Warning") end,
 	left_sep = function() return { str = ' ', hl = mode_color().c } end,
-	hl = function() return { fg = vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID("LspDiagnosticsSignWarning")), "fg#"), bg = mode_color().c.bg } end
+	hl = function() return { fg = colors.lsp_warning, bg = mode_color().c.bg } end
 })
 table.insert(components.right.active, {
 	provider = function()
@@ -190,7 +203,7 @@ table.insert(components.right.active, {
 	end,
 	enabled = function() return require("feline.providers.lsp").diagnostics_exist("Hint") end,
 	left_sep = function() return { str = ' ', hl = mode_color().c } end,
-	hl = function() return { fg = vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID("LspDiagnosticsSignHint")), "fg#"), bg = mode_color().c.bg } end
+	hl = function() return { fg = colors.lsp_hint, bg = mode_color().c.bg } end
 })
 table.insert(components.right.active, {
 	provider = function()
@@ -198,7 +211,7 @@ table.insert(components.right.active, {
 	end,
 	enabled = function() return require("feline.providers.lsp").diagnostics_exist("Information") end,
 	left_sep = function() return { str = ' ', hl = mode_color().c } end,
-	hl = function() return { fg = vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID("LspDiagnosticsSignInformation")), "fg#"), bg = mode_color().c.bg } end
+	hl = function() return { fg = colors.lsp_information, bg = mode_color().c.bg } end
 })
 
 -- File Type
