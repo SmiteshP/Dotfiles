@@ -23,6 +23,11 @@ local plugins = packer.startup({function(use)
 		run = ":TSUpdate",
 		config = [[require("config.nvim-treesitter")]]
 	}
+	use {
+		"nvim-treesitter/playground",
+		config = [[require("config.playground")]],
+		cmd = "TSPlaygroundToggle"
+	}
 
 	-- Status line
 	use {
@@ -36,6 +41,10 @@ local plugins = packer.startup({function(use)
 			{ "lewis6991/gitsigns.nvim" },
 		},
 		config = [[require("config.feline")]]
+	}
+	use {
+		"~/GeneralCoding/vim-plugins/nvim-gps",
+		config = [[require("config.nvim-gps")]]
 	}
 
 	-- Bufferline

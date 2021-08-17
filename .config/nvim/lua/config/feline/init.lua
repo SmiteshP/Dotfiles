@@ -152,6 +152,7 @@ table.insert(components.left.active, {
 table.insert(components.left.active, {
 	provider = function()
 		local filename = vim.fn.fnamemodify(vim.fn.expand("%"), ":~:.")
+		filename = require("nvim-web-devicons").get_icon(filename, vim.fn.expand("%:e"), { default = true } ) .. ' ' .. filename
 		if vim.bo.modifiable and vim.bo.modified then
 			filename = filename..' '
 		end
@@ -165,8 +166,32 @@ table.insert(components.left.active, {
 	hl = function() return mode_color().c end
 })
 
--- Lsp Server
+-- Nvim-GPS
 table.insert(components.left.active, {
+	provider = function()
+		local text = require("nvim-gps").get_location()
+		if #text ~= 0 then
+			return '> '..text
+		else
+			return ''
+		end
+	end,
+	enabled = function() return require("nvim-gps").is_available() end,
+	right_sep = function() return { str = ' ', hl = mode_color().c } end,
+	hl = function() return mode_color().c end
+})
+
+-- table.insert(components.left.active, {
+	-- provider = function() return require("nvim-treesitter").statusline() end,
+	-- provider = function() return require("config.feline.treesitter_context").context() end,
+-- 	enabled = function() return require("nvim-treesitter.parsers").has_parser() end,
+-- 	left_sep = function() return { str = ' ', hl = mode_color().c } end,
+-- 	right_sep = function() return { str = ' ', hl = mode_color().c } end,
+-- 	hl = function() return mode_color().c end
+-- })
+
+-- Lsp Server
+table.insert(components.right.active, {
 	provider = function()
 		local clients = {}
 		for _, client in pairs(vim.lsp.buf_get_clients()) do
@@ -176,7 +201,6 @@ table.insert(components.left.active, {
 	end,
 	enabled = function() return require("feline.providers.lsp").is_lsp_attached() end,
 	left_sep = function() return { str = ' ', hl = mode_color().c } end,
-	right_sep = function() return { str = ' ', hl = mode_color().c } end,
 	hl = function() return mode_color().c end
 })
 
