@@ -49,9 +49,9 @@ local plugins = packer.startup({function(use)
 
 	-- Bufferline
 	use {
-		"akinsho/nvim-bufferline.lua",
+		"akinsho/bufferline.nvim",
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
-		config = [[require("config.nvim-bufferline")]]
+		config = [[require("config.bufferline")]]
 	}
 
 	-- Git Stuff
