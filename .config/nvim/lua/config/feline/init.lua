@@ -181,24 +181,9 @@ table.insert(components.left.active, {
 	hl = function() return mode_color().c end
 })
 
--- table.insert(components.left.active, {
-	-- provider = function() return require("nvim-treesitter").statusline() end,
-	-- provider = function() return require("config.feline.treesitter_context").context() end,
--- 	enabled = function() return require("nvim-treesitter.parsers").has_parser() end,
--- 	left_sep = function() return { str = ' ', hl = mode_color().c } end,
--- 	right_sep = function() return { str = ' ', hl = mode_color().c } end,
--- 	hl = function() return mode_color().c end
--- })
-
 -- Lsp Server
 table.insert(components.right.active, {
-	provider = function()
-		local clients = {}
-		for _, client in pairs(vim.lsp.buf_get_clients()) do
-			clients[#clients+1] = " " .. client.name
-		end
-		return table.concat(clients, ' ')
-	end,
+	provider = "",
 	enabled = function() return require("feline.providers.lsp").is_lsp_attached() end,
 	left_sep = function() return { str = ' ', hl = mode_color().c } end,
 	hl = function() return mode_color().c end
@@ -231,7 +216,7 @@ table.insert(components.right.active, {
 })
 table.insert(components.right.active, {
 	provider = function()
-		return "● "..require("feline.providers.lsp").get_diagnostics_count("Information")
+		return "𝓲 "..require("feline.providers.lsp").get_diagnostics_count("Information")
 	end,
 	enabled = function() return require("feline.providers.lsp").diagnostics_exist("Information") end,
 	left_sep = function() return { str = ' ', hl = mode_color().c } end,
