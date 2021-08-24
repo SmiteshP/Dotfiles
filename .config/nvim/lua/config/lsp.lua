@@ -1,32 +1,3 @@
--- symbols for autocomplete
-vim.lsp.protocol.CompletionItemKind = {
-	"   (Text) ",
-	"   (Method)",
-	"   (Function)",
-	"   (Constructor)",
-	"   (Field)",
-	"   (Variable)",
-	"   (Class)",
-	"   (Interface)",
-	"   (Module)",
-	" 襁 (Property)",
-	"   (Unit)",
-	"   (Value)",
-	" 練 (Enum)",
-	"   (Keyword)",
-	"   (Snippet)",
-	"   (Color)",
-	"   (File)",
-	"   (Reference)",
-	"   (Folder)",
-	"   (EnumMember)",
-	"   (Constant)",
-	"   (Struct)",
-	"   (Event)",
-	"   (Operator)",
-	"   (TypeParameter)"
-}
-
 -- Diagnostics symbols for display in the sign column.
 vim.fn.sign_define("LspDiagnosticsSignError", { texthl = "LspDiagnosticsSignError", text = "✖", numhl = "LspDiagnosticsSignError" })
 vim.fn.sign_define("LspDiagnosticsSignWarning", { texthl = "LspDiagnosticsSignWarning", text = "❢", numhl = "LspDiagnosticsSignWarning" })
@@ -85,15 +56,9 @@ function common_config.common_on_attach(client, bufnr)
 	end
 end
 
+-- cmp-lsp capabilities
 common_config.capabilities = vim.lsp.protocol.make_client_capabilities()
-common_config.capabilities.textDocument.completion.completionItem.snippetSupport = true
-common_config.capabilities.textDocument.completion.completionItem.resolveSupport = {
-	properties = {
-		'documentation',
-		'detail',
-		'additionalTextEdits',
-	}
-}
+common_config.capabilities = require('cmp_nvim_lsp').update_capabilities(common_config.capabilities)
 
 -- Setup Servers
 require("lspconfig").clangd.setup {

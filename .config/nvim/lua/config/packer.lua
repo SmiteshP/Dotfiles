@@ -69,9 +69,15 @@ local plugins = packer.startup({function(use)
 
 	-- Completion
 	use {
-		"hrsh7th/nvim-compe",
-		requires = "hrsh7th/vim-vsnip",
-		config = [[require("config.nvim-compe")]]
+		"hrsh7th/nvim-cmp",
+		requires = {
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-vsnip",
+			"hrsh7th/vim-vsnip"
+		},
+		config = [[require("config.nvim-cmp")]]
 	}
 
 	-- Autopairs
@@ -79,7 +85,7 @@ local plugins = packer.startup({function(use)
 		"windwp/nvim-autopairs",
 		requires = {
 			"nvim-treesitter/nvim-treesitter",
-			"hrsh7th/nvim-compe"
+			"hrsh7th/nvim-cmp"
 		},
 		config = [[require("config.nvim-autopairs")]]
 	}
