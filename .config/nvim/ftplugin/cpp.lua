@@ -45,4 +45,4 @@ local nopts = {
 }
 
 require("which-key").register(nmaps, nopts)
-vim.cmd("command -buffer Template lua CompCoding_template()")
+vim.cmd("command! -buffer Template lua CompCoding_template()")
