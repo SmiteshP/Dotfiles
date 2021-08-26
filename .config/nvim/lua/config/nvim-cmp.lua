@@ -29,6 +29,13 @@ local icons = {
 	Variable = '',
 }
 
+local sources = {
+	buffer = "[Buffer]",
+	nvim_lsp = "[LSP]",
+	vsnip = "[Vsnip]",
+	path = "[Path]",
+}
+
 local kinds = vim.lsp.protocol.CompletionItemKind
 for i, kind in ipairs(kinds) do
 	kinds[i] = icons[kind] or kind
@@ -46,8 +53,9 @@ cmp.setup {
 		border = { '┌', '─', '┐', '│', '┘', '─', '└', '│' }
 	},
 	formatting = {
-		format = function(_, vim_item)
+		format = function(entry, vim_item)
 			vim_item.kind = icons[vim_item.kind]
+			vim_item.menu = sources[entry.source.name]
 			return vim_item
 		end
 	},
