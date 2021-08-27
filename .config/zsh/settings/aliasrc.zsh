@@ -41,6 +41,9 @@ alias grep="grep --color"
 # del - alternative to rm - moves file to trash
 alias del="mv --target-directory /home/smith/.local/share/Trash/files --backup=t"
 
+# OS-TA
+alias os161="sudo docker run --interactive --tty --volume=\"/home/smith/College/Sem_7/OS/os161:/home/os161/os161\" johnramsden/os161"
+
 ## --- Key Bindings --- ##
 
 # allow vv to edit the command line (standard bash behaviour)
