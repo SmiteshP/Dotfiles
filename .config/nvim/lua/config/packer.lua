@@ -4,18 +4,11 @@ local plugins = packer.startup({function(use)
 	-- Packer
 	use {
 		"wbthomason/packer.nvim",
-		cmd = {
-			"PackerClean",
-			"PackerCompile",
-			"PackerInstall",
-			"PackerLoad",
-			"PackerProfile",
-			"PackerStatus",
-			"PackerSync",
-			"PackerUpdate"
-		},
 		config = [[require("config.packer")]]
 	}
+
+	-- Speed Up
+	use { "lewis6991/impatient.nvim", rocks = "mpack" }
 
 	-- Treesitter
 	use {
@@ -32,10 +25,6 @@ local plugins = packer.startup({function(use)
 	-- Status line
 	use {
 		"famiu/feline.nvim",
-		wants = {
-			"nvim-web-devicons",
-			"gitsigns.nvim"
-		},
 		requires = {
 			{ "kyazdani42/nvim-web-devicons" },
 			{ "lewis6991/gitsigns.nvim" },
