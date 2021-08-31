@@ -184,7 +184,7 @@ table.insert(components.left.active, {
 -- Lsp Server
 table.insert(components.right.active, {
 	provider = " ",
-	enabled = function() return require("feline.providers.lsp").is_lsp_attached() end,
+	enabled = function() return next(vim.lsp.buf_get_clients()) ~= nil end,
 	left_sep = function() return { str = ' ', hl = mode_color().c } end,
 	hl = function() return mode_color().c end
 })
