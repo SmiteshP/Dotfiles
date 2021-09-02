@@ -15,7 +15,7 @@ vim.g.mapleader = ' '
 
 -- Global variables
 Config = {
-	theme = "material",
+	theme = "catppuccino",
 	lsp = {
 		highlight = false
 	},

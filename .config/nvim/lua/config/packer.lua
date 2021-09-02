@@ -146,6 +146,7 @@ local plugins = packer.startup({function(use)
 	use { "eddyekofo94/gruvbox-flat.nvim", opt = true }
 	use { "monsonjeremy/onedark.nvim", opt = true }
 	use { "yashguptaz/calvera-dark.nvim", opt = true }
+	use { "Pocco81/Catppuccino.nvim", opt = true }
 
 end,
 config = {
