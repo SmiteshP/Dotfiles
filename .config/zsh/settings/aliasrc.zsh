@@ -45,7 +45,16 @@ alias del="mv --target-directory /home/smith/.local/share/Trash/files --backup=t
 function os() {
 	if [ "$1" = "new" ]
 	then
-		sudo docker run --interactive --tty --volume=\"/home/smith/College/Sem_7/OS/os161:/home/os161/os161\" johnramsden/os161
+		if [ "$2" = "original" ]
+		then
+			sudo docker run --interactive --tty --volume=\"/home/smith/College/Sem_7/OS/os161:/home/os161/os161\" johnramsden/os161
+		elif [ "$2" = "myos" ]
+		then
+			sudo docker run --interactive --tty --volume=\"/home/smith/College/Sem_7/OS/os161:/home/os161/os161\" myos161
+		else
+			echo "original : create new using original image"
+			echo "myos     : create new using modified image"
+		fi
 	elif [ "$1" = "start" ]
 	then
 		sudo docker start $(cat ~/.cache/os_container)
