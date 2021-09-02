@@ -42,7 +42,34 @@ alias grep="grep --color"
 alias del="mv --target-directory /home/smith/.local/share/Trash/files --backup=t"
 
 # OS-TA
-alias os161="sudo docker run --interactive --tty --volume=\"/home/smith/College/Sem_7/OS/os161:/home/os161/os161\" johnramsden/os161"
+function os() {
+	if [ "$1" = "new" ]
+	then
+		sudo docker run --interactive --tty --volume=\"/home/smith/College/Sem_7/OS/os161:/home/os161/os161\" johnramsden/os161
+	elif [ "$1" = "start" ]
+	then
+		sudo docker start $(cat ~/.cache/os_container)
+	elif [ "$1" = "stop" ]
+	then
+		sudo docker stop $(cat ~/.cache/os_container)
+	elif [ "$1" = "connect" ]
+	then
+		sudo docker exec -it $(cat ~/.cache/os_container) /bin/bash
+	elif [ "$1" = "suconnect" ]
+	then
+		sudo docker exec -u 0 -it $(cat ~/.cache/os_container) /bin/bash
+	elif [ "$1" = "update" ]
+	then
+		echo "$2" > ~/.cache/os_container
+	else
+		echo "new       : create new container"
+		echo "start     : start container"
+		echo "stop      : stop container"
+		echo "connect   : connect to running container"
+		echo "suconnect : connect to running container as sudo"
+		echo "update    : update container ID to be used"
+	fi
+}
 
 ## --- Key Bindings --- ##
 
