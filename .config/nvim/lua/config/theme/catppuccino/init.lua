@@ -42,6 +42,7 @@ catppuccino.setup(
 		dashboard = false,
 		neogit = false,
 		vim_sneak = false,
+		hop = true,
 		fern = false,
 		barbar = false,
 		bufferline = true,
