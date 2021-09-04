@@ -6,4 +6,4 @@
 export FZF_DEFAULT_OPS="--extended"
 # fzf - use fd as underlying command
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
-export FZF_DEFAULT_OPTS='--height=90% --layout=reverse'
+export FZF_DEFAULT_OPTS='--height=90% --layout=reverse --preview-window ",,border-sharp"'
