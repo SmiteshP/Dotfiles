@@ -30,10 +30,10 @@ local icons = {
 }
 
 local sources = {
+	path = "[Path]",
 	buffer = "[Buffer]",
 	nvim_lsp = "[LSP]",
 	vsnip = "[Vsnip]",
-	path = "[Path]",
 }
 
 local kinds = vim.lsp.protocol.CompletionItemKind
@@ -95,9 +95,9 @@ cmp.setup {
 		end,
 	},
 	sources = {
-		{ name = "nvim_lsp" },
-		{ name = "buffer" },
 		{ name = "path" },
+		{ name = "buffer" },
+		{ name = "nvim_lsp" },
 		{ name = "vsnip" },
 	}
 }
