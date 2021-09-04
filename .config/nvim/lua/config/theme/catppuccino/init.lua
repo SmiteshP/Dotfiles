@@ -2,12 +2,16 @@
 vim.cmd("packadd Catppuccino.nvim")
 
 -- Theme
+local variant = "dark_catppuccino"
+
 local catppuccino = require("catppuccino")
+local cp_api = require("catppuccino.api.colors")
+local util = require("catppuccino.utils.util")
+local _, colors = cp_api.get_colors(variant)
 
 -- configure it
-catppuccino.setup(
-{
-	colorscheme = "dark_catppuccino",
+catppuccino.setup({
+	colorscheme = variant,
 	transparency = false,
 	term_colors = false,
 	styles = {
@@ -42,13 +46,19 @@ catppuccino.setup(
 		dashboard = false,
 		neogit = false,
 		vim_sneak = false,
-		hop = true,
+		hop = false,
 		fern = false,
 		barbar = false,
 		bufferline = true,
 		markdown = false,
 	}
-}
-)
+})
+
+catppuccino.remap({}, {
+	HopNextKey = { bg = colors.bg, fg = colors.orange, style = "bold" },
+	HopNextKey1 = { bg = colors.bg, fg = colors.blue, style = "bold" },
+	HopNextKey2 = { bg = colors.bg, fg = util.darken(colors.blue, 0.80, colors.bg) },
+	HopUnmatched = { bg = colors.bg, fg = colors.comment },
+})
 
 catppuccino.load()
