@@ -42,7 +42,9 @@ catppuccino.setup({
 			show_root = true,
 		},
 		which_key = true,
-		indent_blankline = true,
+		indent_blankline = {
+			enabled = false
+		},
 		dashboard = false,
 		neogit = false,
 		vim_sneak = false,

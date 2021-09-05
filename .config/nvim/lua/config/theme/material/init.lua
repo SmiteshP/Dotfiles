@@ -3,10 +3,31 @@ vim.cmd("packadd material.nvim")
 
 -- Theme
 vim.g.material_style = "deep ocean"
-vim.g.material_italic_comments = true
-vim.g.material_italic_keywords = false
-vim.g.material_italic_functions = false
-vim.g.material_italic_variables = false
-vim.g.material_contrast = false
-vim.g.material_borders = true
-require("material").set()
+
+require("material").setup({
+	contrast = true,
+	borders = false,
+	italics = {
+		comments = true,
+		strings = false,
+		keywords = false,
+		functions = false,
+		variables = false
+	},
+	contrast_windows = {
+		"terminal",
+		"packer"
+	},
+	text_contrast = {
+		lighter = false,
+		darker = false
+	},
+	disable = {
+		background = false,
+		term_colors = false,
+		eob_lines = false
+	},
+	custom_highlights = {}
+})
+
+vim.cmd[[colorscheme material]]
