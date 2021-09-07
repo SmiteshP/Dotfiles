@@ -230,9 +230,9 @@ table.insert(components.right.active, {
 	end,
 	enabled = function()
 		if vim.fn.mode() ~= 'i' then
-			lsp_cache.has_error = lsp.diagnostics_exist("Warning")
+			lsp_cache.has_warning = lsp.diagnostics_exist("Warning")
 		end
-		return lsp_cache.has_error
+		return lsp_cache.has_warning
 	end,
 	left_sep = function() return { str = ' ', hl = mode_color().c } end,
 	hl = function() return { fg = colors.lsp_warning, bg = mode_color().c.bg } end
@@ -246,9 +246,9 @@ table.insert(components.right.active, {
 	end,
 	enabled = function()
 		if vim.fn.mode() ~= 'i' then
-			lsp_cache.has_error = lsp.diagnostics_exist("Hint")
+			lsp_cache.has_hint = lsp.diagnostics_exist("Hint")
 		end
-		return lsp_cache.has_error
+		return lsp_cache.has_hint
 	end,
 	left_sep = function() return { str = ' ', hl = mode_color().c } end,
 	hl = function() return { fg = colors.lsp_hint, bg = mode_color().c.bg } end
@@ -262,9 +262,9 @@ table.insert(components.right.active, {
 	end,
 	enabled = function()
 		if vim.fn.mode() ~= 'i' then
-			lsp_cache.has_error = lsp.diagnostics_exist("Information")
+			lsp_cache.has_information = lsp.diagnostics_exist("Information")
 		end
-		return lsp_cache.has_error
+		return lsp_cache.has_information
 	end,
 	left_sep = function() return { str = ' ', hl = mode_color().c } end,
 	hl = function() return { fg = colors.lsp_information, bg = mode_color().c.bg } end
