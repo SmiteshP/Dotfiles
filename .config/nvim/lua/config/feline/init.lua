@@ -1,4 +1,7 @@
+local gps = require("nvim-gps")
 local lsp = require("feline.providers.lsp")
+local whitespace = require("config.feline.whitespace")
+local devicons = require("nvim-web-devicons")
 
 -- Initialize
 local components = {
@@ -154,7 +157,7 @@ table.insert(components.left.active, {
 table.insert(components.left.active, {
 	provider = function()
 		local filename = vim.fn.fnamemodify(vim.fn.expand("%"), ":~:.")
-		filename = require("nvim-web-devicons").get_icon(filename, vim.fn.expand("%:e"), { default = true } ) .. ' ' .. filename
+		filename = devicons.get_icon(filename, vim.fn.expand("%:e"), { default = true } ) .. ' ' .. filename
 		if vim.bo.modifiable and vim.bo.modified then
 			filename = filename..' '
 		end
@@ -171,14 +174,14 @@ table.insert(components.left.active, {
 -- Nvim-GPS
 table.insert(components.left.active, {
 	provider = function()
-		local text = require("nvim-gps").get_location()
+		local text = gps.get_location()
 		if #text ~= 0 then
 			return '> '..text
 		else
 			return ''
 		end
 	end,
-	enabled = function() return require("nvim-gps").is_available() end,
+	enabled = function() return gps.is_available() end,
 	right_sep = function() return { str = ' ', hl = mode_color().c } end,
 	hl = function() return mode_color().c end
 })
@@ -316,7 +319,7 @@ table.insert(components.right.active, {
 -- WhiteSpace
 table.insert(components.right.active, {
 	provider = function()
-		local ret = require("config.feline.whitespace").get_item()
+		local ret = whitespace.get_item()
 		if string.len(ret) == 0 then
 			return ''
 		else
