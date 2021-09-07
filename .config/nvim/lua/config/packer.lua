@@ -8,7 +8,7 @@ local plugins = packer.startup({function(use)
 	}
 
 	-- Speed Up
-	use { "lewis6991/impatient.nvim", rocks = "mpack" }
+	use { "lewis6991/impatient.nvim" }
 
 	-- Treesitter
 	use {
