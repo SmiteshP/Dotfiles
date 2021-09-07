@@ -31,7 +31,8 @@ require("gitsigns").setup {
 			},
 			["<leader>f"] = {
 				p = { "<cmd>Telescope git_files<CR>", "Git Files" }
-			}
+			},
+			["<c-p>"] = { "<cmd>Telescope git_files<CR>", "Git Files" }
 		}
 		require("which-key").register(maps, opts)
 	end,

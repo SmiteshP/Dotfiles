@@ -56,6 +56,7 @@ local nmaps = {
 		["<c-\\>"] = "Toggle Terminal"
 	},
 	["<c-a>"] = { "ggVG", "Select All" },
+	["<c-p>"] = { "<cmd>Telescope find_files<CR>", "Find files" },
 	["<Tab>"] = { "<cmd>BufferLineCycleNext<CR>", "Next Buffer" },
 	["<S-Tab>"] = { "<cmd>BufferLineCyclePrev<CR>", "Prev Buffer" },
 	["<leader>"] = {
