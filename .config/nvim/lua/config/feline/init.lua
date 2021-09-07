@@ -1,3 +1,5 @@
+local lsp = require("feline.providers.lsp")
+
 -- Initialize
 local components = {
 	left = {active = {}, inactive = {}},
@@ -190,35 +192,77 @@ table.insert(components.right.active, {
 })
 
 -- Lsp Diagnostics
+local lsp_cache = {
+	error = '',
+	warning = '',
+	hint = '',
+	information = '',
+	has_error = false,
+	has_warning = false,
+	has_hint = false,
+	has_information = false,
+}
 table.insert(components.right.active, {
 	provider = function()
-		return "✖ "..require("feline.providers.lsp").get_diagnostics_count("Error")
+		if vim.fn.mode() ~= 'i' then
+			lsp_cache.error = "✖ "..lsp.get_diagnostics_count("Error")
+		end
+		return lsp_cache.error
 	end,
-	enabled = function() return require("feline.providers.lsp").diagnostics_exist("Error") end,
+	enabled = function()
+		if vim.fn.mode() ~= 'i' then
+			lsp_cache.has_error = lsp.diagnostics_exist("Error")
+		end
+		return lsp_cache.has_error
+	end,
 	left_sep = function() return { str = ' ', hl = mode_color().c } end,
 	hl = function() return { fg = colors.lsp_error, bg = mode_color().c.bg } end
 })
 table.insert(components.right.active, {
 	provider = function()
-		return "❢ "..require("feline.providers.lsp").get_diagnostics_count("Warning")
+		if vim.fn.mode() ~= 'i' then
+			lsp_cache.warning = "❢ "..lsp.get_diagnostics_count("Warning")
+		end
+		return lsp_cache.warning
 	end,
-	enabled = function() return require("feline.providers.lsp").diagnostics_exist("Warning") end,
+	enabled = function()
+		if vim.fn.mode() ~= 'i' then
+			lsp_cache.has_error = lsp.diagnostics_exist("Warning")
+		end
+		return lsp_cache.has_error
+	end,
 	left_sep = function() return { str = ' ', hl = mode_color().c } end,
 	hl = function() return { fg = colors.lsp_warning, bg = mode_color().c.bg } end
 })
 table.insert(components.right.active, {
 	provider = function()
-		return " "..require("feline.providers.lsp").get_diagnostics_count("Hint")
+		if vim.fn.mode() ~= 'i' then
+			lsp_cache.hint = " "..lsp.get_diagnostics_count("Hint")
+		end
+		return lsp_cache.hint
 	end,
-	enabled = function() return require("feline.providers.lsp").diagnostics_exist("Hint") end,
+	enabled = function()
+		if vim.fn.mode() ~= 'i' then
+			lsp_cache.has_error = lsp.diagnostics_exist("Hint")
+		end
+		return lsp_cache.has_error
+	end,
 	left_sep = function() return { str = ' ', hl = mode_color().c } end,
 	hl = function() return { fg = colors.lsp_hint, bg = mode_color().c.bg } end
 })
 table.insert(components.right.active, {
 	provider = function()
-		return "𝓲 "..require("feline.providers.lsp").get_diagnostics_count("Information")
+		if vim.fn.mode() ~= 'i' then
+			lsp_cache.information = "𝓲 "..lsp.get_diagnostics_count("Information")
+		end
+		return lsp_cache.information
 	end,
-	enabled = function() return require("feline.providers.lsp").diagnostics_exist("Information") end,
+	enabled = function()
+		if vim.fn.mode() ~= 'i' then
+			lsp_cache.has_error = lsp.diagnostics_exist("Information")
+		end
+		return lsp_cache.has_error
+	end,
 	left_sep = function() return { str = ' ', hl = mode_color().c } end,
 	hl = function() return { fg = colors.lsp_information, bg = mode_color().c.bg } end
 })
