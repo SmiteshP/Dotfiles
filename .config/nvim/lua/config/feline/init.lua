@@ -5,9 +5,8 @@ local devicons = require("nvim-web-devicons")
 
 -- Initialize
 local components = {
-	left = {active = {}, inactive = {}},
-	mid = {active = {}, inactive = {}},
-	right = {active = {}, inactive = {}}
+	active = {{}, {}, {}},
+	inactive = {{}, {}, {}},
 }
 
 local properties = {
@@ -78,6 +77,9 @@ local mode_color = function()
 	return color
 end
 
+
+----- LEFT SIDE -----
+
 -- Mode Info
 local alias = {
 	n = "NORMAL",
@@ -108,7 +110,7 @@ local alias = {
 	['r?'] = "CONFIRM",
 	['!'] = "SHELL",
 }
-table.insert(components.left.active, {
+table.insert(components.active[1], {
 	provider = function()
 		local alias_mode = alias[vim.fn.mode()]
 		if alias_mode == nil then
@@ -122,7 +124,7 @@ table.insert(components.left.active, {
 })
 
 -- Git Info
-table.insert(components.left.active, {
+table.insert(components.active[1], {
 	provider = function()
 		local gsd = vim.b.gitsigns_status_dict
 		if not gsd then return '' end
@@ -154,7 +156,7 @@ table.insert(components.left.active, {
 })
 
 -- File Name
-table.insert(components.left.active, {
+table.insert(components.active[1], {
 	provider = function()
 		local filename = vim.fn.fnamemodify(vim.fn.expand("%"), ":~:.")
 		filename = devicons.get_icon(filename, vim.fn.expand("%:e"), { default = true } ) .. ' ' .. filename
@@ -172,7 +174,7 @@ table.insert(components.left.active, {
 })
 
 -- Nvim-GPS
-table.insert(components.left.active, {
+table.insert(components.active[1], {
 	provider = function()
 		local text = gps.get_location()
 		if #text ~= 0 then
@@ -186,8 +188,11 @@ table.insert(components.left.active, {
 	hl = function() return mode_color().c end
 })
 
+
+----- RIGHT SIDE -----
+
 -- Lsp Server
-table.insert(components.right.active, {
+table.insert(components.active[3], {
 	provider = " ",
 	enabled = function() return next(vim.lsp.buf_get_clients()) ~= nil end,
 	left_sep = function() return { str = ' ', hl = mode_color().c } end,
@@ -205,7 +210,7 @@ local lsp_cache = {
 	has_hint = false,
 	has_information = false,
 }
-table.insert(components.right.active, {
+table.insert(components.active[3], {
 	provider = function()
 		if vim.fn.mode() ~= 'i' then
 			lsp_cache.error = "✖ "..lsp.get_diagnostics_count("Error")
@@ -221,7 +226,7 @@ table.insert(components.right.active, {
 	left_sep = function() return { str = ' ', hl = mode_color().c } end,
 	hl = function() return { fg = colors.lsp_error, bg = mode_color().c.bg } end
 })
-table.insert(components.right.active, {
+table.insert(components.active[3], {
 	provider = function()
 		if vim.fn.mode() ~= 'i' then
 			lsp_cache.warning = "❢ "..lsp.get_diagnostics_count("Warning")
@@ -237,7 +242,7 @@ table.insert(components.right.active, {
 	left_sep = function() return { str = ' ', hl = mode_color().c } end,
 	hl = function() return { fg = colors.lsp_warning, bg = mode_color().c.bg } end
 })
-table.insert(components.right.active, {
+table.insert(components.active[3], {
 	provider = function()
 		if vim.fn.mode() ~= 'i' then
 			lsp_cache.hint = " "..lsp.get_diagnostics_count("Hint")
@@ -253,7 +258,7 @@ table.insert(components.right.active, {
 	left_sep = function() return { str = ' ', hl = mode_color().c } end,
 	hl = function() return { fg = colors.lsp_hint, bg = mode_color().c.bg } end
 })
-table.insert(components.right.active, {
+table.insert(components.active[3], {
 	provider = function()
 		if vim.fn.mode() ~= 'i' then
 			lsp_cache.information = "𝓲 "..lsp.get_diagnostics_count("Information")
@@ -271,7 +276,7 @@ table.insert(components.right.active, {
 })
 
 -- File Type
-table.insert(components.right.active, {
+table.insert(components.active[3], {
 	provider = function()
 		return vim.bo.filetype:lower()
 	end,
@@ -281,7 +286,7 @@ table.insert(components.right.active, {
 })
 
 -- File Info
-table.insert(components.right.active, {
+table.insert(components.active[3], {
 	provider = function()
 		local enc = (vim.bo.fenc ~= '' and vim.bo.fenc) or vim.o.enc
 		return enc:lower()..'['..vim.bo.fileformat:lower()..']'
@@ -292,7 +297,7 @@ table.insert(components.right.active, {
 })
 
 -- Line Percent
-table.insert(components.right.active, {
+table.insert(components.active[3], {
 	provider = function()
 		local current_line = vim.fn.line('.')
 		local total_line = vim.fn.line('$')
@@ -304,7 +309,7 @@ table.insert(components.right.active, {
 })
 
 -- Line & Column
-table.insert(components.right.active, {
+table.insert(components.active[3], {
 	provider = function()
 		local line = vim.fn.line('.')
 		local column = vim.fn.col('.')
@@ -317,7 +322,7 @@ table.insert(components.right.active, {
 })
 
 -- WhiteSpace
-table.insert(components.right.active, {
+table.insert(components.active[3], {
 	provider = function()
 		local ret = whitespace.get_item()
 		if string.len(ret) == 0 then
@@ -329,8 +334,11 @@ table.insert(components.right.active, {
 	hl = function() return mode_color().b end
 })
 
+
+----- Inactive Line -----
+
 -- Inactive
-table.insert(components.left.inactive, {
+table.insert(components.inactive[1], {
 	provider = function()
 		return vim.fn.expand("%:t")
 	end,
