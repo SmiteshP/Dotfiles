@@ -140,6 +140,12 @@ local plugins = packer.startup({function(use)
 		config = [[require("config.hop")]]
 	}
 
+	-- Startup
+	use {
+		"goolord/alpha-nvim",
+		config = [[require("config.alpha")]]
+	}
+
 	-- Colorschemes
 	use { "marko-cerovac/material.nvim", opt = true }
 	use	{ "folke/tokyonight.nvim", opt = true }
