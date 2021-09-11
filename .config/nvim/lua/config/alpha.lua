@@ -3,12 +3,13 @@ local if_nil = vim.F.if_nil
 local default_header = {
 	type = "text",
 	val = {
-		[[ _   _                 _           ]],
-		[[| \ | |               (_)          ]],
-		[[|  \| | ___  _____   ___ _ __ ___  ]],
-		[[| . ` |/ _ \/ _ \ \ / / | '_ ` _ \ ]],
-		[[| |\  |  __/ (_) \ V /| | | | | | |]],
-		[[|_| \_|\___|\___/ \_/ |_|_| |_| |_|]],
+		[[                                                 ]],
+		[[███    ██ ███████  ██████  ██    ██ ██ ███    ███]],
+		[[████   ██ ██      ██    ██ ██    ██ ██ ████  ████]],
+		[[██ ██  ██ █████   ██    ██ ██    ██ ██ ██ ████ ██]],
+		[[██  ██ ██ ██      ██    ██  ██  ██  ██ ██  ██  ██]],
+		[[██   ████ ███████  ██████    ████   ██ ██      ██]],
+		[[                                                 ]],
 	},
 	opts = {
 		position = "center",
@@ -18,7 +19,7 @@ local default_header = {
 
 local footer = {
 	type = "text",
-	val = "Loaded "..#vim.fn.globpath('~/.local/share/lunarvim/site/pack/packer/start', '*', 0, 1).." plugins",
+	val = "Loaded "..#vim.fn.globpath("~/.local/share/lunarvim/site/pack/packer/start", '*', 0, 1).." plugins",
 	opts = {
 		position = "center",
 		hl = "Number",
@@ -78,6 +79,7 @@ local opts = {
 		section.header,
 		{type = "padding", val = 2},
 		section.buttons,
+		{type = "padding", val = 2},
 		section.footer,
 	},
 	opts = {
