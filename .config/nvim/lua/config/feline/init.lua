@@ -9,18 +9,6 @@ local components = {
 	inactive = {{}, {}, {}},
 }
 
-local properties = {
-	force_inactive = {
-		filetypes = {
-			"NvimTree",
-			"packer",
-			"dbui"
-		},
-		buftypes = {},
-		bufnames = {}
-	}
-}
-
 -- Colors setup
 local theme = require("config.theme."..Config.theme..".statusline_colors")
 
@@ -349,8 +337,18 @@ table.insert(components.inactive[1], {
 
 -- Setup
 require("feline").setup {
-	default_fg = theme.normal.c.fg,
-	default_bg = theme.normal.c.bg,
+	colors = {
+		fg = theme.normal.c.fg,
+		bg = theme.normal.c.bg
+	},
 	components = components,
-	properties = properties
+	force_inactive = {
+		filetypes = {
+			"NvimTree",
+			"packer",
+			"dbui"
+		},
+		buftypes = {},
+		bufnames = {}
+	}
 }
