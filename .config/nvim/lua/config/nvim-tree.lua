@@ -1,10 +1,8 @@
-vim.g.nvim_tree_hide_dotfiles = 1
-vim.g.nvim_tree_indent_markers = 1
-vim.g.nvim_tree_follow = 0
-vim.g.nvim_tree_disable_default_keybindings = 1
+-- vim.g.nvim_tree_follow = 0
+-- vim.g.nvim_tree_disable_default_keybindings = 1
 local tree_cb = require("nvim-tree.config").nvim_tree_callback
 
-vim.g.nvim_tree_bindings = {
+local keybindings = {
 	{ key = {"<CR>", "o", "<2-LeftMouse>"}, cb = tree_cb("edit") },
 	{ key = {"<2-RightMouse>", "<C-l>"},    cb = tree_cb("cd") },
 	{ key = "<C-v>",                        cb = tree_cb("vsplit") },
@@ -66,5 +64,12 @@ vim.g.nvim_tree_icons = {
 		info = "𝓲",
 		warning = "❢",
 		error = "✖",
+	}
+}
+require("nvim-tree").setup {
+	view = {
+		mappings = {
+			list = keybindings
+		}
 	}
 }
