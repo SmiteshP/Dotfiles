@@ -14,10 +14,10 @@ local theme = require("config.theme."..Config.theme..".statusline_colors")
 
 local colors = {}
 vim.schedule(function()
-	colors.lsp_error = vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID("LspDiagnosticsSignError")), "fg#")
-	colors.lsp_warning = vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID("LspDiagnosticsSignWarning")), "fg#")
-	colors.lsp_hint = vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID("LspDiagnosticsSignHint")), "fg#")
-	colors.lsp_information = vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID("LspDiagnosticsSignInformation")), "fg#")
+	colors.lsp_error = string.format("#%x", vim.api.nvim_get_hl_by_name("LspDiagnosticsSignError", true).foreground)
+	colors.lsp_warning = string.format("#%x", vim.api.nvim_get_hl_by_name("LspDiagnosticsSignWarning", true).foreground)
+	colors.lsp_hint = string.format("#%x", vim.api.nvim_get_hl_by_name("LspDiagnosticsSignHint", true).foreground)
+	colors.lsp_information = string.format("#%x", vim.api.nvim_get_hl_by_name("LspDiagnosticsSignInformation", true).foreground)
 end)
 
 local mode_colors = {
@@ -26,6 +26,9 @@ local mode_colors = {
 	nov = theme.normal,
 	noV = theme.normal,
 	["no"] = theme.normal,
+	niI = theme.normal,
+	niR = theme.normal,
+	niV = theme.normal,
 
 	t = theme.normal,
 	r = theme.normal,
@@ -56,7 +59,7 @@ local mode_colors = {
 }
 
 local mode_color = function()
-	local color = mode_colors[vim.fn.mode()]
+	local color = mode_colors[vim.api.nvim_get_mode().mode]
 
 	if color == nil then
 		color = { fg = "#fc0303", bg = "#000000" }
@@ -100,9 +103,9 @@ local alias = {
 }
 table.insert(components.active[1], {
 	provider = function()
-		local alias_mode = alias[vim.fn.mode()]
+		local alias_mode = alias[vim.api.nvim_get_mode().mode]
 		if alias_mode == nil then
-			alias_mode = vim.fn.mode()
+			alias_mode = vim.api.nvim_get_mode().mode
 		end
 		return alias_mode
 	end,
@@ -200,13 +203,13 @@ local lsp_cache = {
 }
 table.insert(components.active[3], {
 	provider = function()
-		if vim.fn.mode() ~= 'i' then
+		if vim.api.nvim_get_mode().mode:byte(1) ~= string.byte('i') then
 			lsp_cache.error = "✖ "..lsp.get_diagnostics_count("Error")
 		end
 		return lsp_cache.error
 	end,
 	enabled = function()
-		if vim.fn.mode() ~= 'i' then
+		if vim.api.nvim_get_mode().mode:byte(1) ~= string.byte('i') then
 			lsp_cache.has_error = lsp.diagnostics_exist("Error")
 		end
 		return lsp_cache.has_error
@@ -216,13 +219,13 @@ table.insert(components.active[3], {
 })
 table.insert(components.active[3], {
 	provider = function()
-		if vim.fn.mode() ~= 'i' then
+		if vim.api.nvim_get_mode().mode:byte(1) ~= string.byte('i') then
 			lsp_cache.warning = "❢ "..lsp.get_diagnostics_count("Warning")
 		end
 		return lsp_cache.warning
 	end,
 	enabled = function()
-		if vim.fn.mode() ~= 'i' then
+		if vim.api.nvim_get_mode().mode:byte(1) ~= string.byte('i') then
 			lsp_cache.has_warning = lsp.diagnostics_exist("Warning")
 		end
 		return lsp_cache.has_warning
@@ -232,13 +235,13 @@ table.insert(components.active[3], {
 })
 table.insert(components.active[3], {
 	provider = function()
-		if vim.fn.mode() ~= 'i' then
+		if vim.api.nvim_get_mode().mode:byte(1) ~= string.byte('i') then
 			lsp_cache.hint = " "..lsp.get_diagnostics_count("Hint")
 		end
 		return lsp_cache.hint
 	end,
 	enabled = function()
-		if vim.fn.mode() ~= 'i' then
+		if vim.api.nvim_get_mode().mode:byte(1) ~= string.byte('i') then
 			lsp_cache.has_hint = lsp.diagnostics_exist("Hint")
 		end
 		return lsp_cache.has_hint
@@ -248,13 +251,13 @@ table.insert(components.active[3], {
 })
 table.insert(components.active[3], {
 	provider = function()
-		if vim.fn.mode() ~= 'i' then
+		if vim.api.nvim_get_mode().mode:byte(1) ~= string.byte('i') then
 			lsp_cache.information = "𝓲 "..lsp.get_diagnostics_count("Information")
 		end
 		return lsp_cache.information
 	end,
 	enabled = function()
-		if vim.fn.mode() ~= 'i' then
+		if vim.api.nvim_get_mode().mode:byte(1) ~= string.byte('i') then
 			lsp_cache.has_information = lsp.diagnostics_exist("Information")
 		end
 		return lsp_cache.has_information
