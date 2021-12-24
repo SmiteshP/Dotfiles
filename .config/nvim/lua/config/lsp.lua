@@ -1,8 +1,8 @@
 -- Diagnostics symbols for display in the sign column.
-vim.fn.sign_define("LspDiagnosticsSignError", { texthl = "LspDiagnosticsSignError", text = "✖", numhl = "LspDiagnosticsSignError" })
-vim.fn.sign_define("LspDiagnosticsSignWarning", { texthl = "LspDiagnosticsSignWarning", text = "❢", numhl = "LspDiagnosticsSignWarning" })
-vim.fn.sign_define("LspDiagnosticsSignHint", { texthl = "LspDiagnosticsSignHint", text = "", numhl = "LspDiagnosticsSignHint" })
-vim.fn.sign_define("LspDiagnosticsSignInformation", { texthl = "LspDiagnosticsSignInformation", text = "𝓲", numhl = "LspDiagnosticsSignInformation" })
+vim.fn.sign_define("DiagnosticSignError", { texthl = "DiagnosticSignError", text = "✖", numhl = "DiagnosticSignError" })
+vim.fn.sign_define("DiagnosticSignWarn", { texthl = "DiagnosticSignWarn", text = "❢", numhl = "DiagnosticSignWarn" })
+vim.fn.sign_define("DiagnosticSignHint", { texthl = "DiagnosticSignHint", text = "", numhl = "DiagnosticSignHint" })
+vim.fn.sign_define("DiagnosticSignInfo", { texthl = "DiagnosticSignInfo", text = "𝓲", numhl = "DiagnosticSignInfo" })
 
 -- Common Configuration
 local common_config = {}
@@ -26,8 +26,8 @@ local function key_maps(bufnr)
 			n = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
 			r = { "<cmd>lua vim.lsp.buf.references()<CR>", "References" },
 		},
-		["[d"] = { "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", "Prev Diagnostics" },
-		["]d"] = { "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", "Next Diagnostics" }
+		["[d"] = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "Prev Diagnostics" },
+		["]d"] = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "Next Diagnostics" }
 	}
 
 	require("which-key").register(maps, opts);
@@ -60,6 +60,14 @@ end
 common_config.capabilities = vim.lsp.protocol.make_client_capabilities()
 common_config.capabilities = require('cmp_nvim_lsp').update_capabilities(common_config.capabilities)
 
+-- Handlers
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+	virtual_text = true,
+	signs = true,
+	underline = true,
+	update_in_insert = false,
+})
+
 -- Setup Servers
 require("lspconfig").clangd.setup {
 	cmd = { "/usr/bin/clangd", "--background-index", "--cross-file-rename", "--header-insertion=never" },
@@ -67,14 +75,6 @@ require("lspconfig").clangd.setup {
 	capabilities = common_config.capabilities,
 	filetypes = { "c", "cpp", "objc" },
 	rootPatterns = { ".git", "compile_flags.txt", "compile_commands.json" },
-	handlers = {
-		["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-			virtual_text = true,
-			signs = true,
-			underline = true,
-			update_in_insert = false,
-		}),
-	},
 }
 
 require("lspconfig").jdtls.setup {

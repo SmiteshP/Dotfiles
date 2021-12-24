@@ -52,7 +52,7 @@ end
 
 cmp.setup {
 	completion = {
-		completeopt = "menu,noselect"
+		completeopt = "menu,menuone,noselect"
 	},
 	documentation = {
 		border = { '┌', '─', '┐', '│', '┘', '─', '└', '│' }
