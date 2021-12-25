@@ -14,10 +14,10 @@ local theme = require("config.theme."..Config.theme..".statusline_colors")
 
 local colors = {}
 vim.schedule(function()
-	colors.lsp_error = string.format("#%x", vim.api.nvim_get_hl_by_name("LspDiagnosticsSignError", true).foreground)
-	colors.lsp_warning = string.format("#%x", vim.api.nvim_get_hl_by_name("LspDiagnosticsSignWarning", true).foreground)
-	colors.lsp_hint = string.format("#%x", vim.api.nvim_get_hl_by_name("LspDiagnosticsSignHint", true).foreground)
-	colors.lsp_information = string.format("#%x", vim.api.nvim_get_hl_by_name("LspDiagnosticsSignInformation", true).foreground)
+	colors.lsp_error = string.format("#%x", vim.api.nvim_get_hl_by_name("DiagnosticSignError", true).foreground)
+	colors.lsp_warning = string.format("#%x", vim.api.nvim_get_hl_by_name("DiagnosticSignWarn", true).foreground)
+	colors.lsp_hint = string.format("#%x", vim.api.nvim_get_hl_by_name("DiagnosticSignHint", true).foreground)
+	colors.lsp_information = string.format("#%x", vim.api.nvim_get_hl_by_name("DiagnosticSignInfo", true).foreground)
 end)
 
 local mode_colors = {
@@ -220,13 +220,13 @@ table.insert(components.active[3], {
 table.insert(components.active[3], {
 	provider = function()
 		if vim.api.nvim_get_mode().mode:byte(1) ~= string.byte('i') then
-			lsp_cache.warning = "❢ "..lsp.get_diagnostics_count("Warning")
+			lsp_cache.warning = "❢ "..lsp.get_diagnostics_count("Warn")
 		end
 		return lsp_cache.warning
 	end,
 	enabled = function()
 		if vim.api.nvim_get_mode().mode:byte(1) ~= string.byte('i') then
-			lsp_cache.has_warning = lsp.diagnostics_exist("Warning")
+			lsp_cache.has_warning = lsp.diagnostics_exist("Warn")
 		end
 		return lsp_cache.has_warning
 	end,
@@ -252,13 +252,13 @@ table.insert(components.active[3], {
 table.insert(components.active[3], {
 	provider = function()
 		if vim.api.nvim_get_mode().mode:byte(1) ~= string.byte('i') then
-			lsp_cache.information = "𝓲 "..lsp.get_diagnostics_count("Information")
+			lsp_cache.information = "𝓲 "..lsp.get_diagnostics_count("Info")
 		end
 		return lsp_cache.information
 	end,
 	enabled = function()
 		if vim.api.nvim_get_mode().mode:byte(1) ~= string.byte('i') then
-			lsp_cache.has_information = lsp.diagnostics_exist("Information")
+			lsp_cache.has_information = lsp.diagnostics_exist("Info")
 		end
 		return lsp_cache.has_information
 	end,
