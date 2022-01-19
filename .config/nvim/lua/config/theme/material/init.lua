@@ -5,8 +5,14 @@ vim.cmd("packadd material.nvim")
 vim.g.material_style = "deep ocean"
 
 require("material").setup({
-	contrast = true,
-	borders = false,
+	contrast = {
+		sidebars = true,
+		floating_windows = true,
+		line_numbers = false,
+		sign_column = false,
+		cursor_line = true,
+		popup_menu = true
+	},
 	italics = {
 		comments = true,
 		strings = false,
@@ -14,15 +20,16 @@ require("material").setup({
 		functions = false,
 		variables = false
 	},
-	contrast_windows = {
+	contrast_filetypes = {
 		"terminal",
 		"packer"
 	},
-	text_contrast = {
+	high_visibility = {
 		lighter = false,
 		darker = false
 	},
 	disable = {
+		borders = false,
 		background = false,
 		term_colors = false,
 		eob_lines = false
