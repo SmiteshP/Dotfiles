@@ -1,4 +1,4 @@
-local theme = require("lualine.themes.catppuccino")
+local theme = require("lualine.themes.catppuccin")
 
 -- Fill in missing color definitions
 theme.insert.c = theme.normal.c
