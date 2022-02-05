@@ -2,6 +2,7 @@ env:
   WINIT_X11_SCALE_FACTOR: "1.0"
 
 window:
+  opacity: 1
   dynamic_padding: true
   dynamic_title: true
 
@@ -63,8 +64,6 @@ colors:
     magenta: '#FF55FF'
     cyan:    '#55FFFF'
     white:   '#FFFFFF'
-
-background_opacity: 1
 
 cursor:
   style:
