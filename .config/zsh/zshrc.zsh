@@ -19,10 +19,6 @@ for f in $ZSH/settings/*.zsh; do
 	source $f;
 done
 
-# Allow termite to open new instance with PWD
-# Gnome Specific?
-source /etc/profile.d/vte.sh
-
 # To customize prompt, run `p10k configure` or edit $ZSH/settings/p10k.zsh
 source $ZSH/extras/powerlevel10k/powerlevel10k.zsh-theme
 
