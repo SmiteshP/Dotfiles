@@ -16,7 +16,7 @@ mkdir -p $HOME/.config/extras
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/.config/zsh/extras/powerlevel10k
 git clone --depth=1 https://github.com/kazhala/dotbare.git $HOME/.config/zsh/extras/dotbare
 git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.config/zsh/extras/zsh-syntax-highlighting
-git clone --depth=1 https://github.com/zsh-users/zsh-completions.git $HOME/.config/zsh/extras/zsh-completions
+git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions.git $HOME/.config/zsh/extras/zsh-autosuggestions
 
 # Link zshrc
 ln -sfv $HOME/.config/zsh/zshrc.zsh $HOME/.zshrc
