@@ -19,7 +19,7 @@ local default_header = {
 
 local footer = {
 	type = "text",
-	val = "Loaded "..#vim.fn.globpath("~/.local/share/lunarvim/site/pack/packer/start", '*', 0, 1).." plugins",
+	val = "Loaded "..#vim.fn.globpath("~/.local/share/nvim/site/pack/packer/start", '*', 0, 1).." plugins",
 	opts = {
 		position = "center",
 		hl = "Number",
