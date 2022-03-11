@@ -93,7 +93,7 @@ cmp.setup {
 		["<C-e>"] = cmp.mapping.close(),
 		["<CR>"] = cmp.mapping.confirm({
 			behavior = cmp.ConfirmBehavior.Insert,
-			select = true,
+			select = false,
 		})
 	},
 	snippet = {
