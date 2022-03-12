@@ -90,6 +90,26 @@ function pacsearch() {
 	fi
 }
 
+# fzf grep
+function fg() {
+	RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case "
+	INITIAL_QUERY="${*:-}"
+	FZF_DEFAULT_COMMAND="$RG_PREFIX $(printf %q "$INITIAL_QUERY")" \
+	SELECTED=$(
+		fzf --ansi \
+			--color "hl:-1:underline,hl+:-1:underline:reverse" \
+			--disabled --query "$INITIAL_QUERY" \
+			--bind "change:reload:sleep 0.1; $RG_PREFIX {q} || true" \
+			--bind "alt-enter:unbind(change,alt-enter)+change-prompt(2. fzf> )+enable-search+clear-query" \
+			--prompt '1. ripgrep> ' \
+			--delimiter : \
+			--preview 'bat --color=always {1} --highlight-line {2}' \
+			--preview-window 'up,60%,border-bottom,+{2}+3/3,~3'
+	)
+	SELECTED=("${(@s/:/)SELECTED}")
+	[ -n "${SELECTED[1]}" ] && nvim "${SELECTED[1]}" "+normal ${SELECTED[2]}G${SELECTED[3]}l"
+}
+
 # acitivate python environment (with fzf)
 function activate() {
 	if [ -z "$1" ]; then
