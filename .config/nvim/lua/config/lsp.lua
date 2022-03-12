@@ -49,6 +49,16 @@ local function documentHighlight(client)
 	end
 end
 
+vim.api.nvim_exec(
+[[
+	augroup lsp_hover
+	autocmd! * <buffer>
+	autocmd CursorHold <buffer> lua vim.diagnostic.open_float({scope = "cursor", border = "single", header = "", prefix = "", focus = false})
+	augroup END
+]],
+false
+)
+
 function common_config.common_on_attach(client, bufnr)
 	key_maps(bufnr)
 	if Config.lsp.highlight then
@@ -58,14 +68,21 @@ end
 
 -- cmp-lsp capabilities
 common_config.capabilities = vim.lsp.protocol.make_client_capabilities()
-common_config.capabilities = require('cmp_nvim_lsp').update_capabilities(common_config.capabilities)
+common_config.capabilities = require("cmp_nvim_lsp").update_capabilities(common_config.capabilities)
 
--- Handlers
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-	virtual_text = true,
-	signs = true,
+-- Diagnostics config
+vim.diagnostic.config({
 	underline = true,
+	virtual_text = false,
+	signs = true,
 	update_in_insert = false,
+	float = {
+		scope = "cursor",
+		border = "single",
+		header = "",
+		prefix = "",
+		focus = false
+	}
 })
 
 -- Setup Servers
