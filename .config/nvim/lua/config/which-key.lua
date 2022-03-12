@@ -66,6 +66,7 @@ local nmaps = {
 			name = "Find",
 			f = { "<cmd>Telescope find_files<CR>", "Files" },
 			g = { "<cmd>Telescope live_grep<CR>", "Grep" },
+			o = { "<cmd>Telescope oldfiles<CR>", "Old Files" }
 		},
 		x = { "<cmd>bdelete<CR>", "Close Buffer" },
 		["<Tab>"] = { "<cmd>Telescope buffers<CR>", "Show Buffers" },
