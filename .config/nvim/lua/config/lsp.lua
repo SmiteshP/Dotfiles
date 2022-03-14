@@ -81,7 +81,7 @@ vim.diagnostic.config({
 		border = "single",
 		header = "",
 		prefix = "",
-		focus = false
+		focusable = false
 	}
 })
 
