@@ -26,22 +26,22 @@ local mode_colors = {
 	nov = theme.normal,
 	noV = theme.normal,
 	["no"] = theme.normal,
+
 	niI = theme.normal,
 	niR = theme.normal,
 	niV = theme.normal,
-
-	t = theme.normal,
-	r = theme.normal,
-	rm = theme.normal,
-	["r?"] = theme.normal,
-
-	s = theme.normal,
-	S = theme.normal,
-	[''] = theme.normal,
+	nt = theme.normal,
 
 	v = theme.visual,
+	vs = theme.visual,
 	V = theme.visual,
+	Vs = theme.visual,
 	[''] = theme.visual,
+	['s'] = theme.visual,
+
+	s = theme.visual,
+	S = theme.visual,
+	[''] = theme.visual,
 
 	i = theme.insert,
 	ic = theme.insert,
@@ -49,20 +49,30 @@ local mode_colors = {
 
 	R = theme.replace,
 	Rc = theme.replace,
-	Rv = theme.replace,
 	Rx = theme.replace,
+	Rv = theme.replace,
+	Rvc = theme.replace,
+	Rvx = theme.replace,
 
 	c = theme.command,
 	cv = theme.command,
-	ce = theme.command,
+
+	r = theme.normal,
+	rm = theme.normal,
+	["r?"] = theme.normal,
 	['!'] = theme.command,
+	t = theme.normal,
 }
 
 local mode_color = function()
 	local color = mode_colors[vim.api.nvim_get_mode().mode]
 
 	if color == nil then
-		color = { fg = "#fc0303", bg = "#000000" }
+		color = {
+			a = { fg = "#fc0303", bg = "#000000" },
+			b = { fg = "#fc0303", bg = "#000000" },
+			c = { fg = "#fc0303", bg = "#000000" },
+		}
 	end
 
 	return color
@@ -75,31 +85,43 @@ end
 local alias = {
 	n = "NORMAL",
 	no = "OP PENDING",
+	nov = "OP PENDING CHAR",
+	noV = "OP PENDING LINE",
+	["no"] = "OP PENDING BLOCK",
 
-	t = "TERMINAL",
+	niI = "INSERT (NORMAL)",
+	niR = "REPLACE (NORMAL)",
+	niV = "V-REPLACE (NORMAL)",
+
+	v = "VISUAL",
+	vs = "VISUAL",
+	V = "V-LINE",
+	Vs = "V-LINE",
+	[''] = "V-BLOCK",
+	['s'] = "V-BLOCK",
 
 	s = "SELECT",
 	S = "S-LINE",
 	[''] = "S-BLOCK",
-
-	v = "VISUAL",
-	V = "V-LINE",
-	[''] = "V-BLOCK",
 
 	i = "INSERT",
 	ic = "INSERT COMPL",
 	ix = "INSERT COMPL",
 
 	R = "REPLACE",
-	Rv = "V REPLACE",
+	Rc = "REPLACE",
+	Rx = "REPLACE",
+	Rv = "V-REPLACE",
+	Rvc = "V-REPLACE",
+	Rvx = "V-REPLACE",
 
 	c = "COMMAND",
-	cv = "VIM EX",
-	ce = "EX",
+	cv = "EX",
 	r = "PROMPT",
 	rm = "MORE",
 	['r?'] = "CONFIRM",
 	['!'] = "SHELL",
+	t = "TERMINAL",
 }
 table.insert(components.active[1], {
 	provider = function()
