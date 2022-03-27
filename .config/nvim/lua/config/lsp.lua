@@ -25,6 +25,7 @@ local function key_maps(bufnr)
 			h = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Help" },
 			n = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
 			r = { "<cmd>lua vim.lsp.buf.references()<CR>", "References" },
+			l = { "<cmd>lua vim.diagnostic.open_float({scope = 'line'})<CR>", "Show Diagnostics" },
 		},
 		["[d"] = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "Prev Diagnostics" },
 		["]d"] = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "Next Diagnostics" }
@@ -49,18 +50,18 @@ local function documentHighlight(client)
 	end
 end
 
-vim.api.nvim_exec(
-[[
-	augroup lsp_hover
-	autocmd! * <buffer>
-	autocmd CursorHold <buffer> lua vim.diagnostic.open_float({scope = "cursor", border = "single", header = "", prefix = "", focus = false})
-	augroup END
-]],
-false
-)
 
 function common_config.common_on_attach(client, bufnr)
 	key_maps(bufnr)
+	vim.api.nvim_exec(
+	[[
+		augroup lsp_hover
+		autocmd! * <buffer>
+		autocmd CursorHold <buffer> lua vim.diagnostic.open_float({scope = "cursor"})
+		augroup END
+	]],
+	false
+	)
 	if Config.lsp.highlight then
 		documentHighlight(client)
 	end
