@@ -33,3 +33,4 @@ sudo ln -sfv $HOME/.config/nvim -t /root/.config
 # Ranger
 sudo rm -rf /root/.config/ranger
 sudo ln -sfv $HOME/.config/ranger -t /root/.config
+git clone --depth=1 https://github.com/alexanderjeurissen/ranger_devicons $HOME/.config/ranger/plugins/ranger_devicons
