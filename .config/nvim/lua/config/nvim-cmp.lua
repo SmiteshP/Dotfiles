@@ -31,6 +31,7 @@ local icons = {
 
 local sources = {
 	path = "[Path]",
+	nvim_lua = "[Lua]",
 	buffer = "[Buffer]",
 	nvim_lsp = "[LSP]",
 	vsnip = "[Vsnip]",
@@ -54,8 +55,10 @@ cmp.setup {
 	completion = {
 		completeopt = "menu,menuone,noselect"
 	},
-	documentation = {
-		border = { '┌', '─', '┐', '│', '┘', '─', '└', '│' }
+	window = {
+		documentation = {
+			border = { '┌', '─', '┐', '│', '┘', '─', '└', '│' }
+		}
 	},
 	formatting = {
 		format = function(entry, vim_item)
@@ -103,8 +106,10 @@ cmp.setup {
 	},
 	sources = {
 		{ name = "path" },
-		{ name = "buffer" },
+		{ name = "nvim_lua" },
 		{ name = "nvim_lsp" },
+		{ name = 'nvim_lsp_signature_help' },
+		{ name = "buffer" },
 		{ name = "vsnip" },
 	}
 }
