@@ -32,8 +32,8 @@ draw_bold_text_with_bright_colors: true
 
 colors:
   primary:
-    background: '#010422'
-    foreground: '#2BABBA'
+    background: '#0F111A'
+    foreground: '#A6ACCD'
   search:
     matches:
       foreground: '#000000'
@@ -48,23 +48,23 @@ colors:
   # Normal colors
   normal:
     black:   '#000000'
-    red:     '#AA0000'
-    green:   '#00AA00'
-    yellow:  '#AA5500'
-    blue:    '#0000AA'
-    magenta: '#AA00AA'
-    cyan:    '#00AAAA'
+    red:     '#B02730'
+    green:   '#7BA63A'
+    yellow:  '#BA831C'
+    blue:    '#1D5BD7'
+    magenta: '#AC00E6'
+    cyan:    '#239DCD'
     white:   '#AAAAAA'
   # Bright colors
   bright:
     black:   '#555555'
-    red:     '#FF5555'
-    green:   '#55FF55'
-    yellow:  '#FFFF55'
-    blue:    '#5555FF'
-    magenta: '#FF55FF'
-    cyan:    '#55FFFF'
-    white:   '#FFFFFF'
+    red:     '#D33641'
+    green:   '#95C251'
+    yellow:  '#DFA02A'
+    blue:    '#4379E5'
+    magenta: '#C61AFF'
+    cyan:    '#43B3DF'
+    white:   '#EEFFFF'
 
 cursor:
   style:
