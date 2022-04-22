@@ -1,12 +1,5 @@
 local theme = require("lualine.themes.material-nvim")
 
--- kaicataldo/material.vim colors for statusline
-theme.normal.a.bg = "#89ddff"
-theme.insert.a.bg = "#bb80b3"
-theme.visual.a.bg = "#82aaff"
-theme.replace.a.bg = "#91b859"
-theme.command.a.bg = theme.normal.a.bg
-
 -- Fill in missing color definitions
 theme.insert.c = theme.normal.c
 theme.visual.c = theme.normal.c
