@@ -34,36 +34,50 @@ local function key_maps(bufnr)
 	require("which-key").register(maps, opts);
 end
 
-local function documentHighlight(client)
+local function documentHighlight(client, bufnr)
 	-- Set autocommands conditional on server_capabilities
 	if client.resolved_capabilities.document_highlight then
-		vim.api.nvim_exec(
-		[[
-			augroup lsp_document_highlight
-			autocmd! * <buffer>
-			autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-			autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-			augroup END
-		]],
-		false
+		local lsp_document_highlight = vim.api.nvim_create_augroup("lsp_document_highlight", {clear = false})
+		vim.api.nvim_clear_autocmds({
+			buffer = bufnr,
+			group = lsp_document_highlight
+		})
+		vim.api.nvim_create_autocmd(
+			"CursorHold",
+			{
+				callback = function() vim.lsp.buf.document_highlight() end,
+				group = lsp_document_highlight,
+				buffer = 0
+			}
+		)
+		vim.api.nvim_create_autocmd(
+			"CursorMoved",
+			{
+				callback = function() vim.lsp.buf.clear_references() end,
+				group = lsp_document_highlight,
+				buffer = 0
+			}
 		)
 	end
 end
 
-
 function common_config.common_on_attach(client, bufnr)
 	key_maps(bufnr)
-	vim.api.nvim_exec(
-	[[
-		augroup lsp_hover
-		autocmd! * <buffer>
-		autocmd CursorHold <buffer> lua vim.diagnostic.open_float({scope = "cursor"})
-		augroup END
-	]],
-	false
+	local lsp_hover_augroup = vim.api.nvim_create_augroup("lsp_hover", {clear = false})
+	vim.api.nvim_clear_autocmds({
+		buffer = bufnr,
+		group = lsp_hover_augroup
+	})
+	vim.api.nvim_create_autocmd(
+		"CursorHold",
+		{
+			callback = function() vim.diagnostic.open_float() end,
+			group = lsp_hover_augroup,
+			buffer = bufnr
+		}
 	)
 	if Config.lsp.highlight then
-		documentHighlight(client)
+		documentHighlight(client, bufnr)
 	end
 end
 
