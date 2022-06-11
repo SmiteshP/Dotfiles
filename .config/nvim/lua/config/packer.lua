@@ -24,7 +24,7 @@ local plugins = packer.startup({function(use)
 
 	-- Status line
 	use {
-		"famiu/feline.nvim",
+		"feline-nvim/feline.nvim",
 		requires = {
 			{ "kyazdani42/nvim-web-devicons" },
 			{ "lewis6991/gitsigns.nvim" },
@@ -33,7 +33,12 @@ local plugins = packer.startup({function(use)
 	}
 	use {
 		"~/GeneralCoding/vim-plugins/nvim-gps",
-		config = [[require("config.nvim-gps")]]
+		config = [[require("config.nvim-gps")]],
+		disable = true
+	}
+	use {
+		"~/GeneralCoding/vim-plugins/nvim-navic",
+		config = [[require("config.nvim-navic")]]
 	}
 
 	-- Bufferline
