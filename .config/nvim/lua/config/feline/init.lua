@@ -1,4 +1,5 @@
-local gps = require("nvim-gps")
+-- local gps = require("nvim-gps")
+local navic = require("nvim-navic")
 local lsp = require("feline.providers.lsp")
 local whitespace = require("config.feline.whitespace")
 local devicons = require("nvim-web-devicons")
@@ -187,16 +188,31 @@ table.insert(components.active[1], {
 })
 
 -- Nvim-GPS
+-- table.insert(components.active[1], {
+-- 	provider = function()
+-- 		local text = gps.get_location()
+-- 		if #text ~= 0 then
+-- 			return '> '..text
+-- 		else
+-- 			return ''
+-- 		end
+-- 	end,
+-- 	enabled = function() return gps.is_available() end,
+-- 	right_sep = function() return { str = ' ', hl = mode_color().c } end,
+-- 	hl = function() return mode_color().c end
+-- })
+
+-- nvim-navic
 table.insert(components.active[1], {
 	provider = function()
-		local text = gps.get_location()
+		local text = navic.get_location()
 		if #text ~= 0 then
 			return '> '..text
 		else
 			return ''
 		end
 	end,
-	enabled = function() return gps.is_available() end,
+	enabled = function() return navic.is_available() end,
 	right_sep = function() return { str = ' ', hl = mode_color().c } end,
 	hl = function() return mode_color().c end
 })

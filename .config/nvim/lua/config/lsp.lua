@@ -79,6 +79,7 @@ function common_config.common_on_attach(client, bufnr)
 	if Config.lsp.highlight then
 		documentHighlight(client, bufnr)
 	end
+	require("nvim-navic").attach(client, bufnr)
 end
 
 -- cmp-lsp capabilities
