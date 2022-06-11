@@ -29,6 +29,7 @@ require("material").setup({
 		darker = false
 	},
 	disable = {
+		colored_cursor = true,
 		borders = false,
 		background = false,
 		term_colors = false,
