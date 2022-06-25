@@ -71,7 +71,14 @@ function common_config.common_on_attach(client, bufnr)
 	vim.api.nvim_create_autocmd(
 		"CursorHold",
 		{
-			callback = function() vim.diagnostic.open_float() end,
+			callback = function()
+				for _, winid in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+					if vim.api.nvim_win_get_config(winid).relative ~= "" then
+						return
+					end
+				end
+				vim.diagnostic.open_float()
+			end,
 			group = lsp_hover_augroup,
 			buffer = bufnr
 		}
