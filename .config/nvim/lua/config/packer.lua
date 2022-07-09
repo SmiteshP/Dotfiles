@@ -32,11 +32,6 @@ local plugins = packer.startup({function(use)
 		config = [[require("config.feline")]]
 	}
 	use {
-		"~/GeneralCoding/vim-plugins/nvim-gps",
-		config = [[require("config.nvim-gps")]],
-		disable = true
-	}
-	use {
 		"~/GeneralCoding/vim-plugins/nvim-navic",
 		config = [[require("config.nvim-navic")]]
 	}
@@ -70,8 +65,9 @@ local plugins = packer.startup({function(use)
 			"hrsh7th/cmp-nvim-lua",
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
-			"hrsh7th/cmp-vsnip",
-			"hrsh7th/vim-vsnip"
+			"hrsh7th/cmp-cmdline",
+			"L3MON4D3/LuaSnip",
+			"saadparwaiz1/cmp_luasnip"
 		},
 		config = [[require("config.nvim-cmp")]]
 	}
