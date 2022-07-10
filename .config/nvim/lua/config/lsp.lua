@@ -37,7 +37,7 @@ end
 local function documentHighlight(client, bufnr)
 	-- Set autocommands conditional on server_capabilities
 	if client.resolved_capabilities.document_highlight then
-		local lsp_document_highlight = vim.api.nvim_create_augroup("lsp_document_highlight", {clear = false})
+		local lsp_document_highlight = vim.api.nvim_create_augroup("config_lsp_document_highlight", {clear = false})
 		vim.api.nvim_clear_autocmds({
 			buffer = bufnr,
 			group = lsp_document_highlight
@@ -63,7 +63,7 @@ end
 
 function common_config.common_on_attach(client, bufnr)
 	key_maps(bufnr)
-	local lsp_hover_augroup = vim.api.nvim_create_augroup("lsp_hover", {clear = false})
+	local lsp_hover_augroup = vim.api.nvim_create_augroup("config_lsp_hover", {clear = false})
 	vim.api.nvim_clear_autocmds({
 		buffer = bufnr,
 		group = lsp_hover_augroup

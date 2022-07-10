@@ -51,13 +51,19 @@ vim.o.showmode = false
 vim.o.splitright = true
 vim.o.termguicolors = true
 
-vim.cmd[[
-	augroup generic
-	autocmd!
-	autocmd BufEnter * silent! lcd %:p:h
-	autocmd TextYankPost * lua vim.highlight.on_yank {higroup="IncSearch", timeout=150, on_visual=true}
-	augroup END
-	]]
+local generic_augroup = vim.api.nvim_create_augroup("config_generic", { clear = true })
+vim.api.nvim_create_autocmd("BufEnter", {
+	group = generic_augroup,
+	command = "lcd %:p:h"
+})
+vim.api.nvim_create_autocmd("TextYankPost", {
+	group = generic_augroup,
+	callback = function()
+		vim.highlight.on_yank({higroup = "IncSearch",
+							   timeout = 150,
+							   on_visual = true})
+	end
+})
 
 -- Disable some built-in plugins
 local disabled_built_ins = {
