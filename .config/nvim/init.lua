@@ -54,7 +54,11 @@ vim.o.termguicolors = true
 local generic_augroup = vim.api.nvim_create_augroup("config_generic", { clear = true })
 vim.api.nvim_create_autocmd("BufEnter", {
 	group = generic_augroup,
-	command = "lcd %:p:h"
+	callback = function()
+		if vim.o.buftype ~= "terminal" then
+			vim.cmd("lcd %:p:h")
+		end
+	end
 })
 vim.api.nvim_create_autocmd("TextYankPost", {
 	group = generic_augroup,
