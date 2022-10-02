@@ -1,7 +1,9 @@
 require("bufferline").setup {
 	options = {
 		numbers = "none",
-		indicator_icon = '▎',
+		indicator = {
+			icon = '▎'
+		},
 		buffer_close_icon = '',
 		modified_icon = '',
 		close_icon = '',
@@ -29,7 +31,7 @@ require("bufferline").setup {
 	},
 	highlights = {
 		buffer_selected = {
-			gui = "bold"
+			bold = true
 		}
 	}
 }
