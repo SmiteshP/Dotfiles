@@ -36,40 +36,38 @@ local keybindings = {
 	{ key = "?",                            cb = tree_cb("toggle_help") },
 }
 
-vim.g.nvim_tree_show_icons = {
-	git = 1,
-	folders = 1,
-	files = 1
-}
-
-vim.g.nvim_tree_icons = {
-	default = '',
-	symlink = '',
-	git = {
-		unstaged = "",
-		staged = "✓",
-		unmerged = "",
-		renamed = "➜",
-		untracked = "?"
-	},
-	folder = {
-		default = "",
-		open = "",
-		empty = "",
-		empty_open = "",
-		symlink = ""
-	},
-	lsp = {
-		hint = "",
-		info = "𝓲",
-		warning = "❢",
-		error = "✖",
-	}
-}
 require("nvim-tree").setup {
 	view = {
 		mappings = {
 			list = keybindings
+		}
+	},
+	renderer = {
+		icons = {
+			show = {
+				file = true,
+				folder = true,
+				folder_arrow = true,
+				git = true
+			},
+			glyphs = {
+				default = '',
+				symlink = '',
+				git = {
+					unstaged = "",
+					staged = "✓",
+					unmerged = "",
+					renamed = "➜",
+					untracked = "?"
+				},
+				folder = {
+					default = "",
+					open = "",
+					empty = "",
+					empty_open = "",
+					symlink = ""
+				}
+			}
 		}
 	}
 }
