@@ -6,23 +6,24 @@ vim.g.material_style = "deep ocean"
 
 require("material").setup({
 	contrast = {
+		terminal = false,
 		sidebars = true,
 		floating_windows = true,
-		line_numbers = false,
-		sign_column = false,
 		cursor_line = true,
-		popup_menu = true
+		non_current_windows = true,
+		filetypes = {
+			"terminal",
+			"packer"
+		}
 	},
-	italics = {
-		comments = true,
-		strings = false,
-		keywords = false,
-		functions = false,
-		variables = false
-	},
-	contrast_filetypes = {
-		"terminal",
-		"packer"
+	style = {
+		comments = { italics = true },
+		strings = {},
+		keywords = {},
+		functions = {},
+		variables = {},
+		operators = {},
+		types = {},
 	},
 	high_visibility = {
 		lighter = false,
@@ -35,7 +36,25 @@ require("material").setup({
 		term_colors = false,
 		eob_lines = false
 	},
-	custom_highlights = {}
+	custom_highlights = {},
+	plugins = {
+		"dap",
+		"dashboard",
+		"gitsigns",
+		"hop",
+		"indent-blankline",
+		"lspsaga",
+		"mini",
+		"neogit",
+		"nvim-cmp",
+		"nvim-navic",
+		"nvim-tree",
+		"nvim-web-devicons",
+		"sneak",
+		"telescope",
+		"trouble",
+		"which-key",
+	},
 })
 
 vim.cmd[[colorscheme material]]

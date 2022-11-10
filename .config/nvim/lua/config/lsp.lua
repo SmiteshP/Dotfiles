@@ -91,7 +91,7 @@ end
 
 -- cmp-lsp capabilities
 common_config.capabilities = vim.lsp.protocol.make_client_capabilities()
-common_config.capabilities = require("cmp_nvim_lsp").update_capabilities(common_config.capabilities)
+common_config.capabilities = require("cmp_nvim_lsp").default_capabilities(common_config.capabilities)
 
 -- Diagnostics config
 vim.diagnostic.config({
@@ -176,4 +176,10 @@ require("lspconfig").rust_analyzer.setup {
 	on_attach = common_config.common_on_attach,
 	capabilities = common_config.capabilities,
 	filetypes = { "rust" },
+}
+
+require("lspconfig").html.setup {
+	cmd = { "/usr/bin/vscode-html-languageserver", "--stdio" },
+	on_attach = common_config.common_on_attach,
+	capabilities = common_config.capabilities
 }
