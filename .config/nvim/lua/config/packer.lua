@@ -152,7 +152,8 @@ local plugins = packer.startup({function(use)
 	-- Colorschemes
 	use { "marko-cerovac/material.nvim", opt = true }
 	use	{ "folke/tokyonight.nvim", opt = true }
-	use { "eddyekofo94/gruvbox-flat.nvim", opt = true }
+	use { "eddyekofo94/gruvbox-flat.nvim", opt = true, disable = true }
+	use { "sainnhe/gruvbox-material", opt=true }
 	use { "monsonjeremy/onedark.nvim", opt = true }
 	use { "yashguptaz/calvera-dark.nvim", opt = true }
 	use { "Pocco81/Catppuccino.nvim", opt = true }

@@ -18,17 +18,3 @@ npairs.add_rules {
 		return vim.tbl_contains({ '()', '[]', '{}' }, pair)
 	end)
 }
-
--- FIXME: Treesitter rules don't work if nvim-tree installed (Why?)
---[[
-require("nvim-treesitter.configs").setup {
-	autopairs = { enable = true }
-}
-
-npairs.add_rules({
-	-- FIXME: inserts > even for <= places (ts_conds not working?)
-	Rule("<", ">", "cpp")
-		:with_pair(ts_conds.is_ts_node({"template_argument_list"}))
-		:with_move(function(opts) return cond.move_right() and opts.char ~= '<' end)
-})
---]]
