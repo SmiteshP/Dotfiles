@@ -50,6 +50,8 @@ vim.o.scrolloff = 8
 vim.o.showmode = false
 vim.o.splitright = true
 vim.o.termguicolors = true
+vim.o.winblend = 10
+vim.o.pumblend = 10
 
 local generic_augroup = vim.api.nvim_create_augroup("config_generic", { clear = true })
 vim.api.nvim_create_autocmd("BufEnter", {

@@ -28,7 +28,7 @@ require("telescope").setup {
 		file_ignore_patterns = { ".out" },
 		generic_sorter =  require("telescope.sorters").get_generic_fuzzy_sorter,
 		path_display = { "absolute" },
-		winblend = 0,
+		winblend = vim.o.winblend,
 		border = {},
 		borderchars = { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
 		color_devicons = true,

@@ -31,6 +31,7 @@ wk.setup {
 	window = {
 		border = "single",
 		position = "bottom",
+		winblend = vim.o.winblend,
 		margin = { 1, 0, 1, 0 },
 		padding = { 0, 2, 0, 2 },
 	},
