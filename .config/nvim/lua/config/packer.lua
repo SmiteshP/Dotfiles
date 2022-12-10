@@ -55,6 +55,11 @@ local plugins = packer.startup({function(use)
 		"neovim/nvim-lspconfig",
 		config = [[require("config.lsp")]]
 	}
+	use {
+		"simrat39/rust-tools.nvim",
+		requires = { "neovim/nvim-lspconfig" },
+		config = [[require("config.rust-tools")]]
+	}
 
 	-- Completion
 	use {
