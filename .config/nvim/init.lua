@@ -15,7 +15,7 @@ vim.g.mapleader = ' '
 
 -- Global variables
 Config = {
-	theme = "gruvbox-material",
+	theme = "material",
 	lsp = {
 		highlight = false
 	},

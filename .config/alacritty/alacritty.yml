@@ -130,7 +130,7 @@ schemes:
       cyan:    '#43B3DF'
       white:   '#EEFFFF'
 
-colors: *gruvbox_material_hard_dark
+colors: *material_ocean_dark
 
 cursor:
   style:
