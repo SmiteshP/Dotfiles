@@ -24,7 +24,6 @@ rt.setup({
 		},
 	},
 	server = {
-		cmd = { "/usr/bin/rust-analyzer" },
 		on_attach = common_config.common_on_attach,
 		capabilities = common_config.capabilities,
 		filetypes = { "rust" },

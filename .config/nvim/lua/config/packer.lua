@@ -52,6 +52,8 @@ local plugins = packer.startup({function(use)
 
 	-- LSP
 	use {
+		"williamboman/mason.nvim",
+		"williamboman/mason-lspconfig.nvim",
 		"neovim/nvim-lspconfig",
 		config = [[require("config.lsp")]]
 	}

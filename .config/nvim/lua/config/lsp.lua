@@ -1,3 +1,14 @@
+require("mason").setup()
+require("mason-lspconfig").setup({
+	ensure_installed = {
+		"clangd",
+		"pyright",
+		"sumneko_lua",
+		"rust_analyzer"
+	},
+	automatic_installation = true,
+})
+
 -- Diagnostics symbols for display in the sign column.
 vim.fn.sign_define("DiagnosticSignError", { texthl = "DiagnosticSignError", text = "✖", numhl = "DiagnosticSignError" })
 vim.fn.sign_define("DiagnosticSignWarn", { texthl = "DiagnosticSignWarn", text = "❢", numhl = "DiagnosticSignWarn" })
@@ -18,13 +29,13 @@ local function key_maps(bufnr)
 		["<leader>l"] = {
 			name = "Lsp",
 			a = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code Action" },
-			d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Definition" },
+			d = { "<cmd>lua require('telescope.builtin').lsp_definitions()<CR>", "Definition" },
 			D = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Declaration" },
-			i = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Implementation" },
+			i = { "<cmd>lua require('telescope.builtin').lsp_implementations()<CR>", "Implementation" },
 			k = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Hover" },
 			h = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Help" },
 			n = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
-			r = { "<cmd>lua vim.lsp.buf.references()<CR>", "References" },
+			r = { "<cmd>lua require('telescope.builtin').lsp_references()<CR>", "References" },
 			l = { "<cmd>lua vim.diagnostic.open_float({scope = 'line'})<CR>", "Show Diagnostics" },
 		},
 		["[d"] = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "Prev Diagnostics" },
@@ -110,7 +121,7 @@ vim.diagnostic.config({
 
 -- Setup Servers
 require("lspconfig").clangd.setup {
-	cmd = { "/usr/bin/clangd", "--background-index", "--cross-file-rename", "--header-insertion=never" },
+	cmd = { "clangd" , "--background-index", "--cross-file-rename", "--header-insertion=never" },
 	on_attach = common_config.common_on_attach,
 	capabilities = common_config.capabilities,
 	filetypes = { "c", "cpp", "objc" },
@@ -118,7 +129,6 @@ require("lspconfig").clangd.setup {
 }
 
 require("lspconfig").jdtls.setup {
-	cmd = { "jdtls" },
 	on_attach = common_config.common_on_attach,
 	capabilities = common_config.capabilities,
 	filetypes = { "java" },
@@ -126,7 +136,6 @@ require("lspconfig").jdtls.setup {
 }
 
 require("lspconfig").pyright.setup {
-	cmd = { "/usr/bin/pyright-langserver", "--stdio" },
 	on_attach = common_config.common_on_attach,
 	capabilities = common_config.capabilities,
 	filetypes = { "python" },
@@ -145,7 +154,6 @@ require("lspconfig").pyright.setup {
 }
 
 require("lspconfig").sumneko_lua.setup {
-	cmd = { "/usr/bin/lua-language-server" },
 	on_attach = common_config.common_on_attach,
 	capabilities = common_config.capabilities,
 	filetypes = { "lua" },
@@ -172,7 +180,6 @@ require("lspconfig").sumneko_lua.setup {
 }
 
 require("lspconfig").html.setup {
-	cmd = { "/usr/bin/vscode-html-languageserver", "--stdio" },
 	on_attach = common_config.common_on_attach,
 	capabilities = common_config.capabilities
 }
