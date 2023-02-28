@@ -16,11 +16,6 @@ local plugins = packer.startup({function(use)
 		run = ":TSUpdate",
 		config = [[require("config.nvim-treesitter")]]
 	}
-	use {
-		"nvim-treesitter/playground",
-		config = [[require("config.playground")]],
-		cmd = "TSPlaygroundToggle"
-	}
 
 	-- Status line
 	use {
