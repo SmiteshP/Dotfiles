@@ -3,7 +3,7 @@ require("mason-lspconfig").setup({
 	ensure_installed = {
 		"clangd",
 		"pyright",
-		"sumneko_lua",
+		"lua_ls",
 		"rust_analyzer"
 	},
 	automatic_installation = true,
@@ -104,6 +104,14 @@ end
 common_config.capabilities = vim.lsp.protocol.make_client_capabilities()
 common_config.capabilities = require("cmp_nvim_lsp").default_capabilities(common_config.capabilities)
 
+-- Handlers
+vim.lsp.handlers['workspace/diagnostic/refresh'] = function(_, _, ctx)
+  local ns = vim.lsp.diagnostic.get_namespace(ctx.client_id)
+  local bufnr = vim.api.nvim_get_current_buf()
+  vim.diagnostic.reset(ns, bufnr)
+  return true
+end
+
 -- Diagnostics config
 vim.diagnostic.config({
 	underline = true,
@@ -153,7 +161,7 @@ require("lspconfig").pyright.setup {
 	}
 }
 
-require("lspconfig").sumneko_lua.setup {
+require("lspconfig").lua_ls.setup {
 	on_attach = common_config.common_on_attach,
 	capabilities = common_config.capabilities,
 	filetypes = { "lua" },
