@@ -91,12 +91,12 @@ local plugins = packer.startup({function(use)
 
 	-- Comments
 	use {
-		"terrortylor/nvim-comment",
+		"numToStr/Comment.nvim",
 		keys = {
 			{ 'n', "<leader>c" },
 			{ 'v', "<leader>c" }
 		},
-		config = [[require("config.nvim-comment")]]
+		config = [[require("config.comment")]]
 	}
 
 	-- Nvim tree

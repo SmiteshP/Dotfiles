@@ -62,7 +62,13 @@ local nmaps = {
 	["<S-Tab>"] = { "<cmd>BufferLineCyclePrev<CR>", "Prev Buffer" },
 	["<leader>"] = {
 		b = { "<cmd>NvimTreeToggle<CR>", "File Tree" },
-		c = { name = "Comment", c = { "Comment Line" } },
+		c = {
+			name = "Comment",
+			c = { "Comment Line" },
+			O = { "Comment Line Above "},
+			o = { "Comment Line Below "},
+			A = { "Comment at End of Line"}
+		},
 		f = {
 			name = "Find",
 			f = { "<cmd>Telescope find_files<CR>", "Files" },
