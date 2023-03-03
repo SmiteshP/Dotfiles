@@ -61,13 +61,17 @@ local nmaps = {
 	["<Tab>"] = { "<cmd>BufferLineCycleNext<CR>", "Next Buffer" },
 	["<S-Tab>"] = { "<cmd>BufferLineCyclePrev<CR>", "Prev Buffer" },
 	["<leader>"] = {
-		b = { "<cmd>NvimTreeToggle<CR>", "File Tree" },
+		t = { "<cmd>NvimTreeToggle<CR>", "File Tree" },
 		c = {
 			name = "Comment",
 			c = { "Comment Line" },
 			O = { "Comment Line Above "},
 			o = { "Comment Line Below "},
 			A = { "Comment at End of Line"}
+		},
+		b = {
+			name = "Comment Block",
+			c = "Comment Block"
 		},
 		f = {
 			name = "Find",
@@ -86,6 +90,7 @@ local vmaps = {
 	["<c-c>"] = { "\"+y", "Copy to Clipboard" },
 	["<leader>"] = {
 		c = {"Comment Selection"},
+		b = {"Comment Block"},
 	}
 }
 

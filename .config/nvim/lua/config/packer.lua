@@ -89,7 +89,9 @@ local plugins = packer.startup({function(use)
 		"numToStr/Comment.nvim",
 		keys = {
 			{ 'n', "<leader>c" },
-			{ 'v', "<leader>c" }
+			{ 'v', "<leader>c" },
+			{ 'n', "<leader>b" },
+			{ 'v', "<leader>b" }
 		},
 		config = [[require("config.comment")]]
 	}
