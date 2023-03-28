@@ -98,6 +98,7 @@ function common_config.common_on_attach(client, bufnr)
 		documentHighlight(client, bufnr)
 	end
 	require("nvim-navic").attach(client, bufnr)
+	require("nvim-navbuddy").attach(client, bufnr)
 end
 
 -- cmp-lsp capabilities

@@ -57,6 +57,14 @@ local plugins = packer.startup({function(use)
 		requires = { "neovim/nvim-lspconfig" },
 		config = [[require("config.rust-tools")]]
 	}
+	use {
+		"~/GeneralCoding/vim-plugins/nvim-navbuddy",
+		requires = {
+			"MunifTanjim/nui.nvim",
+			"neovim/nvim-lspconfig"
+		},
+		config = [[require("config.nvim-navbuddy")]]
+	}
 
 	-- Completion
 	use {
