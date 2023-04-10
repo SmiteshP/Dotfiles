@@ -17,15 +17,6 @@ local default_header = {
 	}
 }
 
-local footer = {
-	type = "text",
-	val = "Loaded "..#vim.fn.globpath("~/.local/share/nvim/site/pack/packer/start", '*', 0, 1).." plugins",
-	opts = {
-		position = "center",
-		hl = "Number",
-	}
-}
-
 --                    req req  optional optional
 local function button(sc, txt, keybind, keybind_opts)
 	local sc_ = sc:gsub("%s", ""):gsub("SPC", "<leader>")
@@ -70,7 +61,6 @@ local buttons = {
 local section = {
 	header = default_header,
 	buttons = buttons,
-	footer = footer,
 }
 
 local opts = {
@@ -79,8 +69,6 @@ local opts = {
 		section.header,
 		{type = "padding", val = 2},
 		section.buttons,
-		{type = "padding", val = 2},
-		section.footer,
 	},
 	opts = {
 		margin = 5

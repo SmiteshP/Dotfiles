@@ -1,13 +1,13 @@
 require("mason").setup()
-require("mason-lspconfig").setup({
-	ensure_installed = {
-		"clangd",
-		"pyright",
-		"lua_ls",
-		"rust_analyzer"
-	},
-	automatic_installation = true,
-})
+-- require("mason-lspconfig").setup({
+-- 	ensure_installed = {
+-- 		"clangd",
+-- 		"pyright",
+-- 		"lua_ls",
+-- 		"rust_analyzer"
+-- 	},
+-- 	automatic_installation = true,
+-- })
 
 -- Diagnostics symbols for display in the sign column.
 vim.fn.sign_define("DiagnosticSignError", { texthl = "DiagnosticSignError", text = "✖", numhl = "DiagnosticSignError" })
@@ -189,6 +189,11 @@ require("lspconfig").lua_ls.setup {
 }
 
 require("lspconfig").html.setup {
+	on_attach = common_config.common_on_attach,
+	capabilities = common_config.capabilities
+}
+
+require("lspconfig").tsserver.setup {
 	on_attach = common_config.common_on_attach,
 	capabilities = common_config.capabilities
 }

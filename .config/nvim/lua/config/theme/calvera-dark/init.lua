@@ -1,6 +1,3 @@
--- Source
-vim.cmd("packadd calvera-dark.nvim")
-
 -- Theme
 vim.g.calvera_italic_keywords = false
 vim.g.calvera_italic_comments = true

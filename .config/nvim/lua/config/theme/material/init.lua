@@ -1,6 +1,3 @@
--- Source
-vim.cmd("packadd material.nvim")
-
 -- Theme
 vim.g.material_style = "deep ocean"
 

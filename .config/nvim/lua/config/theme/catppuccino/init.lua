@@ -1,6 +1,3 @@
--- Source
-vim.cmd("packadd Catppuccino.nvim")
-
 -- Theme
 local variant = "dark_catppuccino"
 

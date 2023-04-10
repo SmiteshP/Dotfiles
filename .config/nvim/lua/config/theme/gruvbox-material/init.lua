@@ -1,6 +1,3 @@
--- Source
-vim.cmd("packadd gruvbox-material")
-
 -- Theme
 vim.g.gruvbox_material_background = "hard"
 vim.g.gruvbox_material_foreground = "material"
