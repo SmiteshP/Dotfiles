@@ -82,8 +82,9 @@ local nmaps = {
 		x = { "<cmd>bdelete<CR>", "Close Buffer" },
 		["<Tab>"] = { "<cmd>Telescope buffers<CR>", "Show Buffers" },
 		['.'] = { "<cmd>BufferLineMoveNext<CR>", "Buf Move Right" },
-		[','] = { "<cmd>BufferLineMovePrev<CR>", "Buf Move Left" }
-	}
+		[','] = { "<cmd>BufferLineMovePrev<CR>", "Buf Move Left" },
+		["s"] = { "<cmd>Navbuddy<CR>", "Navbuddy" }
+	},
 }
 
 local vmaps = {
