@@ -21,9 +21,6 @@ Config = {
 	lsp = {
 		highlight = false
 	},
-	statusline = {
-		minimal = false
-	}
 }
 
 -- Tab settings

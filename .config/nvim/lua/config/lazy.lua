@@ -14,15 +14,15 @@ local plugins = {
 
 	-- Status line
 	{
-		"feline-nvim/feline.nvim",
+		"nvim-lualine/lualine.nvim",
 		dependencies = {
 			"kyazdani42/nvim-web-devicons",
 			"lewis6991/gitsigns.nvim",
 			"SmiteshP/nvim-navic"
 		},
 		config = function()
-			require("config.feline")
-		end
+			require("config.lualine")
+		end,
 	},
 	{
 		"SmiteshP/nvim-navic",
@@ -69,7 +69,6 @@ local plugins = {
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
-		lazy = false,
 		dependencies = {
 			"mason.nvim"
 		}
