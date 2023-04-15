@@ -247,6 +247,9 @@ lualine.setup({
 	options = {
 		section_separators = '',
 		component_separators = '',
+		disabled_filetypes = {
+			statusline = {"NvimTree"},
+		},
 	},
 	sections = {
 		lualine_a = lualine_a,
