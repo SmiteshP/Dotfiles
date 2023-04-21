@@ -1,10 +1,9 @@
 local lualine = require("lualine")
 
-local navic = require("nvim-navic")
 local whitespace = require("config.lualine.whitespace")
 
-local modules = require('lualine_require').lazy_require({
-	loader = 'lualine.utils.loader',
+local modules = require("lualine_require").lazy_require({
+	loader = "lualine.utils.loader",
 })
 local theme = modules.loader.load_theme("auto")
 
@@ -166,7 +165,7 @@ local lualine_b = {
 
 local lualine_c = {
 	{
-		'filetype',
+		"filetype",
 		icon_only = true,
 		padding = { left = 1, right = 0 }
 	},
@@ -183,9 +182,8 @@ local lualine_c = {
 		end,
 	},
 	{
-		function() return navic.get_location() end,
+		"navic",
 		icon = '>',
-		cond = function() return navic.is_available() end,
 		padding = 0
 	}
 }
@@ -202,7 +200,7 @@ local lualine_x = {
 		padding = { left = 0, right = 1 }
 	},
 	{
-		'bo:filetype',
+		"bo:filetype",
 		padding = { left = 0, right = 1 }
 	},
 }
