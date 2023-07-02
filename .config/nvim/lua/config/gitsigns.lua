@@ -8,10 +8,6 @@ require("gitsigns").setup {
 	},
 	numhl = false,
 	linehl = false,
-	keymaps = {
-		noremap = true,
-		buffer = true,
-	},
 	on_attach = function(bufnr)
 		local opts = { buffer=bufnr, noremap=true, silent=true }
 		local maps = {

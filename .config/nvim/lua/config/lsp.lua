@@ -97,6 +97,7 @@ function common_config.common_on_attach(client, bufnr)
 	if Config.lsp.highlight then
 		documentHighlight(client, bufnr)
 	end
+
 	require("nvim-navic").attach(client, bufnr)
 	require("nvim-navbuddy").attach(client, bufnr)
 end
@@ -107,10 +108,10 @@ common_config.capabilities = require("cmp_nvim_lsp").default_capabilities(common
 
 -- Handlers
 vim.lsp.handlers['workspace/diagnostic/refresh'] = function(_, _, ctx)
-  local ns = vim.lsp.diagnostic.get_namespace(ctx.client_id)
-  local bufnr = vim.api.nvim_get_current_buf()
-  vim.diagnostic.reset(ns, bufnr)
-  return true
+	local ns = vim.lsp.diagnostic.get_namespace(ctx.client_id)
+	local bufnr = vim.api.nvim_get_current_buf()
+	vim.diagnostic.reset(ns, bufnr)
+	return true
 end
 
 -- Diagnostics config
